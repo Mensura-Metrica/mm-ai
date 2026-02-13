@@ -26,33 +26,34 @@ Most software projects fail not because of bad code, but because of **bad archit
 | 7 | [Deployment](07-deployment/release-planning.md) | Release | Controlled rollout |
 | 8 | [Maintenance](08-maintenance/evolution-planning.md) | Sustain & evolve | Volatility-aware evolution |
 
-## How to Use
+## How to Use (VS Code)
 
-1. **Load the system prompt** — Give your LLM [prompts/system-prompt.md](prompts/system-prompt.md)
-2. **Load the phase prompt** — Start with [prompts/phase-1-discovery.md](prompts/phase-1-discovery.md)
-3. **Work through the phase** — Each prompt has the agent persona, instructions, and gate checklist built in
-4. **Pass the gate** — Check all items at the bottom of the prompt before advancing
-5. **Load the next phase prompt** — Feed artifacts forward as context
-6. **Templates** — Use reusable document templates in [templates/](templates/)
-7. **Never skip the architecture phase** — This is the hill we die on
+1. **Open Agent Mode** in VS Code
+2. **Type `/`** and pick a phase prompt (e.g. `phase-1-discovery`)
+3. **Work through the phase** — each prompt has the agent persona, instructions, and gate checklist
+4. **Pass the gate** — all items must check off before advancing
+5. **Pick the next phase** — feed artifacts forward as context
+6. **Templates** — use reusable document templates in [templates/](templates/)
+7. **Never skip the architecture phase** — this is the hill we die on
 
-See [How to Use](00-overview/how-to-use.md) for full details.
+The instruction file `.github/instructions/mm-ai.instructions.md` auto-loads IDesign context into every conversation. See [How to Use](00-overview/how-to-use.md) for details.
 
 ## Project Structure
 
 ```
 mm-ai/
+├── .github/
+│   ├── instructions/      # Auto-loaded IDesign methodology context
+│   └── prompts/           # VS Code phase prompts (start here)
 ├── 00-overview/           # Methodology foundation & principles
-├── 01-discovery/          # Ideation, feasibility, problem framing
-├── 02-product-definition/ # Requirements, product brief, PRD
-├── 03-architecture/       # IDesign volatility analysis, service decomposition
-├── 04-project-design/     # Activity breakdown, scheduling, risk
-├── 05-implementation/     # Sprint execution, coding standards, reviews
-├── 06-quality-assurance/  # Test strategy, execution, validation
-├── 07-deployment/         # Release planning, deployment execution
-├── 08-maintenance/        # Monitoring, evolution, technical debt
-├── agents/                # LLM agent personas and orchestrator
-├── prompts/               # Ready-to-use combined phase prompts (start here)
+├── 01-discovery/          # Deep reference: discovery process, feasibility
+├── 02-product-definition/ # Deep reference: requirements gathering
+├── 03-architecture/       # Deep reference: volatility, decomposition, interfaces
+├── 04-project-design/     # Deep reference: activities, scheduling, risk
+├── 05-implementation/     # Deep reference: sprints, standards, reviews
+├── 06-quality-assurance/  # Deep reference: test strategy
+├── 07-deployment/         # Deep reference: release planning
+├── 08-maintenance/        # Deep reference: evolution planning
 └── templates/             # Reusable document templates
 ```
 

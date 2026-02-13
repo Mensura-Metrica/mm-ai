@@ -34,17 +34,9 @@ This workspace includes **VS Code prompt files** that integrate directly into Co
 
 ---
 
-## Alternative: Manual Prompt Loading
-
-The `prompts/` folder also contains **combined prompt files** for use with any LLM (not just VS Code).
-
-1. Load `prompts/system-prompt.md` into your LLM
-2. Load the phase file (e.g., `prompts/phase-1-discovery.md`)
-3. Work through the phase, check the gate, advance
-
 ## Reference Material
 
-The full source material lives in the phase folders (`01-discovery/`, `02-product-definition/`, etc.) with more detailed guidance, and in `agents/` for the orchestrator.
+The phase folders (`01-discovery/` through `08-maintenance/`) contain deeper reference material — detailed processes, frameworks, and checklists beyond what's in the prompt files. The prompts reference this material when needed.
 
 ### Key Decisions That Require Human Judgment
 - Validation of volatility axes (only you know your business domain)
@@ -53,42 +45,8 @@ The full source material lives in the phase folders (`01-discovery/`, `02-produc
 - Risk acceptance decisions
 - Scope negotiations
 
-## For LLMs
+## Reuse
 
-### Loading a Phase
-When working with a phase, load these files in order:
-1. The **agent persona** (e.g., `03-architecture/architect-agent.md`)
-2. The **phase instructions** (e.g., `03-architecture/volatility-analysis.md`)
-3. Any **inputs from previous phases** (e.g., the PRD from Phase 2)
-4. Relevant **templates** (e.g., `templates/architecture-document-template.md`)
+**Template repo**: Use "Use this template" on GitHub to start a new project with the full methodology.
 
-### Maintaining Context
-- Each phase file specifies its **Inputs** (what it needs) and **Outputs** (what it produces)
-- Outputs from one phase become inputs to the next
-- The Orchestrator manages the dependency chain between phases
-- All artifacts should be kept in the project workspace for reference
-
-### Quality Self-Check
-Before presenting outputs to the human, the LLM should:
-1. Review the gate checklist for the current phase
-2. Verify each criterion is met
-3. Flag any criteria that cannot be verified without human input
-4. Present both the outputs and the gate compliance status
-
-## Document Conventions
-
-### Phase Document Structure
-Every phase document follows this structure:
-- **Purpose** — Why this phase exists
-- **Agent Persona** — Link to the specialized LLM instructions
-- **Instructions** — Step-by-step guidance for the LLM
-- **Inputs** — What artifacts are required from previous phases
-- **Outputs** — What artifacts this phase produces
-- **Quality Criteria** — How to validate the outputs
-
-### Gate Checklist Format
-Every gate checklist uses this format:
-```markdown
-- [ ] Criterion description — *How to verify*
-```
-All items must be checked before the gate passes. No exceptions.
+**User-level install**: Copy `.github/instructions/` and `.github/prompts/` to `%APPDATA%\Code\User\` to have the prompts available in every VS Code workspace.
