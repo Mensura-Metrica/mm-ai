@@ -1,72 +1,46 @@
 # MM-AI: IDesign-Driven Software Development Methodology
 
-An LLM-guided methodology for taking software products from inception through project completion, grounded in **IDesign principles** (Juval Löwy / *Righting Software*) with a relentless focus on quality.
+LLM-guided methodology for taking software products from inception through completion, grounded in **IDesign principles** (Juval Löwy / *Righting Software*).
 
-## Philosophy
+## What This Is
 
-Most software projects fail not because of bad code, but because of **bad architecture and bad project design**. This methodology addresses root causes:
+A **template repo** for new projects + **VS Code prompt files** that guide you through 8 phases:
 
-- **Volatility-based decomposition** over functional decomposition
-- **Architecture-first** approach — get the design right before writing code
-- **Project Design as a discipline** — not just "we'll figure out the schedule later"
-- **Quality gates** at every phase transition — no phase is entered without validation
-- **LLM agents as specialized roles** — each phase has a purpose-built agent persona
+1. **Discovery** — Problem framing, feasibility
+2. **Product Definition** — Requirements, user stories, volatility tagging
+3. **Architecture** — IDesign volatility decomposition (the heart of it)
+4. **Project Design** — Architecture-driven scheduling & risk
+5. **Implementation** — Contract-first, bottom-up development
+6. **Quality Assurance** — Architecture-aligned testing
+7. **Deployment** — Architecture-ordered release
+8. **Maintenance** — Volatility-driven evolution
 
-## Phases
+## Setup
 
-| # | Phase | Purpose | Key IDesign Concept |
-|---|-------|---------|-------------------|
-| 0 | [Overview](00-overview/methodology.md) | Methodology foundation | Core principles |
-| 1 | [Discovery](01-discovery/discovery-session.md) | Ideation & feasibility | Problem framing |
-| 2 | [Product Definition](02-product-definition/requirements-gathering.md) | Requirements & PRD | Use case analysis |
-| 3 | [Architecture](03-architecture/volatility-analysis.md) | System design | Volatility decomposition, Service taxonomy |
-| 4 | [Project Design](04-project-design/activity-breakdown.md) | Planning & scheduling | The Design of the project itself |
-| 5 | [Implementation](05-implementation/sprint-planning.md) | Building | Guided by architecture |
-| 6 | [Quality Assurance](06-quality-assurance/test-strategy.md) | Verification & validation | Architecture-aligned testing |
-| 7 | [Deployment](07-deployment/release-planning.md) | Release | Controlled rollout |
-| 8 | [Maintenance](08-maintenance/evolution-planning.md) | Sustain & evolve | Volatility-aware evolution |
+**The prompt files live at user-level** (not in this repo). Install once:
 
-## How to Use (VS Code)
-
-1. **Open Agent Mode** in VS Code
-2. **Type `/`** and pick a phase prompt (e.g. `phase-1-discovery`)
-3. **Work through the phase** — each prompt has the agent persona, instructions, and gate checklist
-4. **Pass the gate** — all items must check off before advancing
-5. **Pick the next phase** — feed artifacts forward as context
-6. **Templates** — use reusable document templates in [templates/](templates/)
-7. **Never skip the architecture phase** — this is the hill we die on
-
-The instruction file `.github/instructions/mm-ai.instructions.md` auto-loads IDesign context into every conversation. See [How to Use](00-overview/how-to-use.md) for details.
-
-## Project Structure
-
+```powershell
+# Copy prompts and instructions to VS Code user directory
+Copy-Item "<mm-ai-clone>\user-level\instructions\*" "$env:APPDATA\Code\User\instructions\" -Recurse
+Copy-Item "<mm-ai-clone>\user-level\prompts\*" "$env:APPDATA\Code\User\prompts\" -Recurse
 ```
-mm-ai/
-├── .github/
-│   ├── instructions/      # Auto-loaded IDesign methodology context
-│   └── prompts/           # VS Code phase prompts (start here)
-├── 00-overview/           # Methodology foundation & principles
-├── 01-discovery/          # Deep reference: discovery process, feasibility
-├── 02-product-definition/ # Deep reference: requirements gathering
-├── 03-architecture/       # Deep reference: volatility, decomposition, interfaces
-├── 04-project-design/     # Deep reference: activities, scheduling, risk
-├── 05-implementation/     # Deep reference: sprints, standards, reviews
-├── 06-quality-assurance/  # Deep reference: test strategy
-├── 07-deployment/         # Deep reference: release planning
-├── 08-maintenance/        # Deep reference: evolution planning
-└── templates/             # Reusable document templates
-```
+
+Then in any project: **Agent Mode → `/` → pick a phase**.
+
+## Using the Template
+
+Click **"Use this template"** on GitHub to start a new project. You get:
+- `templates/` — Document templates (product brief, PRD, architecture doc, project plan, test plan, user stories)
+- `methodology-reference.md` — Deep reference for all 8 phases and IDesign concepts
+- This README
 
 ## Key Principles
 
-1. **Architecture is not optional** — Every system gets a proper volatility analysis and service decomposition
-2. **Quality is designed in, not tested in** — Quality gates prevent phase transitions until criteria are met
-3. **Project Design is a first-class discipline** — Scheduling, risk, and cost are architectural concerns
-4. **Volatility drives decomposition** — Services encapsulate axes of change, not business functions
-5. **The LLM is a tool, not the architect** — Human judgment validates all architectural decisions
+1. **Volatility drives decomposition** — services encapsulate axes of change, not business functions
+2. **Architecture is not optional** — every system gets a proper volatility analysis
+3. **Quality is designed in, not tested in** — gates prevent phase transitions until criteria met
+4. **The LLM is a tool, not the architect** — human judgment validates all decisions
 
 ## Influenced By
 
 - **IDesign Method** — Juval Löwy, *Righting Software*
-- **BMAD Method** — For LLM agent workflow patterns
-- **Software engineering fundamentals** — SOLID, separation of concerns, design by contract
