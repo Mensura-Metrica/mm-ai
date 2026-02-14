@@ -33,6 +33,14 @@ This template can be aligned with IDesign standards for architecture and coding 
 - Project standards declaration template: `templates/adopted-standards-checklist-template.md`
 - Standards-to-evidence mapping template: `templates/standards-traceability-matrix-template.md`
 
+## Orchestration Profiles (Optional)
+
+Use `docs/strict-orchestration-pack.md` when you need tighter multi-agent governance.
+
+- `solo-lean` — lowest overhead, single-review default.
+- `solo-strict` — dual-review at critical steps and orchestrator enforcement.
+- `team-strict` — expanded role specialization with mandatory evidence at all key steps.
+
 ## Quick Start (Template Consumers)
 
 1. **Create repo from template**
@@ -54,6 +62,11 @@ This template can be aligned with IDesign standards for architecture and coding 
 	- The workflow auto-bootstraps config if missing, then fails PRs when policy is violated.
 	- See `docs/compliance-ci-setup.md` for end-to-end setup details.
 
+6. **(Optional) Enable strict orchestration controls**
+	- Adopt `docs/strict-orchestration-pack.md`.
+	- Use `templates/execution-control-protocol-template.md` and `templates/agent-handoff-contract-template.md` for step execution.
+	- Use `templates/recovery-playbook-template.md` for drift/failure recovery.
+
 ## Using the Template
 
 Click **"Use this template"** on GitHub to start a new project. You get:
@@ -62,6 +75,9 @@ Click **"Use this template"** on GitHub to start a new project. You get:
 - `templates/automated-compliance-rubric-template.md` — Weighted compliance scoring rubric for automated checks
 - `templates/adopted-standards-checklist-template.md` — Project-level declaration of mandatory/advisory standards
 - `templates/standards-traceability-matrix-template.md` — Trace standards to phase gates, evidence, and CI checks
+- `templates/agent-handoff-contract-template.md` — Standardized per-step handoff I/O and allowed scope contract
+- `templates/execution-control-protocol-template.md` — Feed/pause/kill/escalate control model and triggers
+- `templates/recovery-playbook-template.md` — Recovery workflow for drift, blockages, and execution failures
 - `templates/compliance-check-config.template.json` — Policy thresholds and required rules for CI gating
 - `templates/compliance-check-report.schema.json` — JSON schema for machine-readable compliance reports
 - `templates/compliance-check-report.example.json` — Example report payload for tool/pipeline integration
@@ -69,6 +85,7 @@ Click **"Use this template"** on GitHub to start a new project. You get:
 - `docs/compliance-ci-setup.md` — Setup guide for running compliance checks on pull requests
 - `docs/idesign-standards-reference.md` — External standards links and adoption guidance
 - `docs/adopted-standards.md` — Concrete enforceable standards baseline for template consumers
+- `docs/strict-orchestration-pack.md` — Optional strict multi-agent governance profile and operating model
 - `.github/workflows/compliance-check.yml` — Ready-to-use PR gate workflow for compliance evaluation
 - `.github/prompts/` — Project-level phase prompts (Discovery through Maintenance)
 - `.github/instructions/mm-ai.instructions.md` — Project-level methodology context instructions

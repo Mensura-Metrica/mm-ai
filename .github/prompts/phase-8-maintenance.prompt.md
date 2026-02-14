@@ -34,6 +34,11 @@ Track and prioritize:
 - Service health metrics (complexity, coupling, change frequency)
 - Retirement planning for deprecated services
 
+### 5. Recovery Discipline (Optional Strict Mode)
+- Use a recovery playbook for drift, execution failures, and blocked critical paths
+- Classify incident type before choosing salvage vs rollback
+- Capture post-mortem learning and feed updates back into prompts/templates
+
 ## Ongoing Checks
 - [ ] Every change classified (Encapsulated / Cross-Cutting / Architectural)
 - [ ] Volatility model updated when surprises occur

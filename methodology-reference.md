@@ -35,6 +35,7 @@ Recommended enforcement artifacts:
 - `docs/idesign-standards-reference.md` — external standards references and adoption checklist
 - `docs/adopted-standards.md` and `templates/adopted-standards-checklist-template.md` — enforceable project standards and selected-rule declaration
 - `templates/standards-traceability-matrix-template.md` — standards-to-evidence and standards-to-CI-rule mapping
+- `docs/strict-orchestration-pack.md` and related templates — optional strict controls for handoffs, execution state transitions, and recovery
 
 ### The Cost of Defects
 

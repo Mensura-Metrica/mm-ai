@@ -40,6 +40,7 @@ For each service, in build order:
 - Wire services together following the call graph
 - Integration tests at each connection point
 - Validate no layer skipping in actual code
+- In strict mode, enforce step handoff contracts and approved change manifests
 
 ### 5. Code Quality
 - Consistent naming conventions
@@ -62,5 +63,7 @@ Before moving to Phase 6, ALL must pass:
 - [ ] Architecture deviations documented and justified
 - [ ] Coding standards compliance verified (if standards are in scope for the project)
 - [ ] Mandatory adopted standards have evidence links in gate artifacts
+- [ ] (Strict mode) Step outputs comply with handoff contract and allowed file scope
+- [ ] (Strict mode) No out-of-manifest file changes without architect approval
 
 When all items pass: **"Gate 5 passed. Ready for Phase 6: Quality Assurance."**
