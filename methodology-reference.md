@@ -34,6 +34,7 @@ Recommended enforcement artifacts:
 - `templates/automated-compliance-rubric-template.md` — weighted compliance scoring and blocker rules
 - `docs/idesign-standards-reference.md` — external standards references and adoption checklist
 - `docs/adopted-standards.md` and `templates/adopted-standards-checklist-template.md` — enforceable project standards and selected-rule declaration
+- `templates/standards-traceability-matrix-template.md` — standards-to-evidence and standards-to-CI-rule mapping
 
 ### The Cost of Defects
 

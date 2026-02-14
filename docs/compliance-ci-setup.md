@@ -62,7 +62,15 @@ jobs:
 
       - name: Generate compliance report
         run: |
+          mkdir -p .mm-ai/out
           echo '{"project":"sample","assessment_scope":"PR","date":"2026-02-14","rules":[{"rule_id":"ARC-001","result":1,"weight":10,"severity":"Critical"}]}' > .mm-ai/out/compliance-report.json
+
+      - name: Ensure compliance config exists
+        run: |
+          mkdir -p .mm-ai
+          if [ ! -f .mm-ai/compliance-check-config.json ]; then
+            cp templates/compliance-check-config.template.json .mm-ai/compliance-check-config.json
+          fi
 
       - name: Evaluate compliance
         shell: pwsh

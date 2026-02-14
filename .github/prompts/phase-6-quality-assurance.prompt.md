@@ -61,5 +61,6 @@ Before moving to Phase 7, ALL must pass:
 - [ ] Acceptance tests pass for all Must-have user stories
 - [ ] No known critical defects open
 - [ ] Regression test suite established
+- [ ] Mandatory adopted standards have verification evidence at QA gate
 
 When all items pass: **"Gate 6 passed. Ready for Phase 7: Deployment."**

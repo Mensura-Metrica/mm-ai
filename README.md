@@ -31,6 +31,7 @@ This template can be aligned with IDesign standards for architecture and coding 
 - Local guidance in this repo: `docs/idesign-standards-reference.md`
 - Enforceable project standards baseline: `docs/adopted-standards.md`
 - Project standards declaration template: `templates/adopted-standards-checklist-template.md`
+- Standards-to-evidence mapping template: `templates/standards-traceability-matrix-template.md`
 
 ## Quick Start (Template Consumers)
 
@@ -60,6 +61,7 @@ Click **"Use this template"** on GitHub to start a new project. You get:
 - `templates/gate-evidence-checklist-template.md` — Objective evidence pack for pass/fail gate decisions
 - `templates/automated-compliance-rubric-template.md` — Weighted compliance scoring rubric for automated checks
 - `templates/adopted-standards-checklist-template.md` — Project-level declaration of mandatory/advisory standards
+- `templates/standards-traceability-matrix-template.md` — Trace standards to phase gates, evidence, and CI checks
 - `templates/compliance-check-config.template.json` — Policy thresholds and required rules for CI gating
 - `templates/compliance-check-report.schema.json` — JSON schema for machine-readable compliance reports
 - `templates/compliance-check-report.example.json` — Example report payload for tool/pipeline integration
