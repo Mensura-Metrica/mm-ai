@@ -32,6 +32,8 @@ Binary pass/fail at every phase transition. No exceptions, no "partial pass."
 Recommended enforcement artifacts:
 - `templates/gate-evidence-checklist-template.md` — objective evidence for each gate criterion
 - `templates/automated-compliance-rubric-template.md` — weighted compliance scoring and blocker rules
+- `docs/idesign-standards-reference.md` — external standards references and adoption checklist
+- `docs/adopted-standards.md` and `templates/adopted-standards-checklist-template.md` — enforceable project standards and selected-rule declaration
 
 ### The Cost of Defects
 

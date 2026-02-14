@@ -46,6 +46,7 @@ For each service, in build order:
 - No magic numbers/strings
 - Dependency injection for all service references
 - Logging at service boundaries
+- Enforce selected coding standards through review and automation where possible
 
 ## Gate 5 Checklist
 Before moving to Phase 6, ALL must pass:
@@ -59,5 +60,7 @@ Before moving to Phase 6, ALL must pass:
 - [ ] Code review completed
 - [ ] No unresolved TODOs in critical paths
 - [ ] Architecture deviations documented and justified
+- [ ] Coding standards compliance verified (if standards are in scope for the project)
+- [ ] Mandatory adopted standards have evidence links in gate artifacts
 
 When all items pass: **"Gate 5 passed. Ready for Phase 6: Quality Assurance."**

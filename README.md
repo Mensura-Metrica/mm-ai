@@ -23,6 +23,15 @@ A **template repo** for new projects + **VS Code prompt files** that guide you t
 
 In a project created from this template: **Agent Mode → `/` → pick a phase**.
 
+## Standards Reference
+
+This template can be aligned with IDesign standards for architecture and coding governance.
+
+- Standards landing page: https://www.idesign.net/Resources/Standards
+- Local guidance in this repo: `docs/idesign-standards-reference.md`
+- Enforceable project standards baseline: `docs/adopted-standards.md`
+- Project standards declaration template: `templates/adopted-standards-checklist-template.md`
+
 ## Quick Start (Template Consumers)
 
 1. **Create repo from template**
@@ -50,11 +59,14 @@ Click **"Use this template"** on GitHub to start a new project. You get:
 - `templates/` — Document templates (product brief, PRD, architecture doc, project plan, test plan, user stories)
 - `templates/gate-evidence-checklist-template.md` — Objective evidence pack for pass/fail gate decisions
 - `templates/automated-compliance-rubric-template.md` — Weighted compliance scoring rubric for automated checks
+- `templates/adopted-standards-checklist-template.md` — Project-level declaration of mandatory/advisory standards
 - `templates/compliance-check-config.template.json` — Policy thresholds and required rules for CI gating
 - `templates/compliance-check-report.schema.json` — JSON schema for machine-readable compliance reports
 - `templates/compliance-check-report.example.json` — Example report payload for tool/pipeline integration
 - `scripts/evaluate-compliance.ps1` — CI evaluator script that returns non-zero on policy violations
 - `docs/compliance-ci-setup.md` — Setup guide for running compliance checks on pull requests
+- `docs/idesign-standards-reference.md` — External standards links and adoption guidance
+- `docs/adopted-standards.md` — Concrete enforceable standards baseline for template consumers
 - `.github/workflows/compliance-check.yml` — Ready-to-use PR gate workflow for compliance evaluation
 - `.github/prompts/` — Project-level phase prompts (Discovery through Maintenance)
 - `.github/instructions/mm-ai.instructions.md` — Project-level methodology context instructions

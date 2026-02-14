@@ -49,6 +49,7 @@ For each service, define:
 - Every service encapsulates at least one volatility axis
 - Call graph has no cycles, no lateral calls, no layer skips
 - No service does "too much" — single responsibility per volatility
+- Design decisions reviewed against selected architecture standards (where adopted)
 
 ## Gate 3 Checklist
 Before moving to Phase 4, ALL must pass:
@@ -62,6 +63,8 @@ Before moving to Phase 4, ALL must pass:
 - [ ] Error taxonomy per service
 - [ ] Every requirement traceable to a service
 - [ ] No service without a volatility justification
+- [ ] Standards alignment documented (if standards are in scope for the project)
+- [ ] Adopted standards checklist completed for project (mandatory vs advisory rules)
 - [ ] Architecture document produced
 
 When all items pass: **"Gate 3 passed. Ready for Phase 4: Project Design."**
