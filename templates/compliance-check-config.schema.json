@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mm-ai/templates/compliance-check-config.schema.json",
+  "title": "MM-AI Compliance Check Config",
+  "type": "object",
+  "required": ["policy", "bands", "required_rules", "fail_on_missing_required_rules"],
+  "properties": {
+    "policy": {
+      "type": "object",
+      "required": [
+        "minimum_weighted_score",
+        "max_critical_failures",
+        "max_high_failures",
+        "require_blocking_conditions_empty"
+      ],
+      "properties": {
+        "minimum_weighted_score": { "type": "number", "minimum": 0, "maximum": 100 },
+        "max_critical_failures": { "type": "integer", "minimum": 0 },
+        "max_high_failures": { "type": "integer", "minimum": 0 },
+        "require_blocking_conditions_empty": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "bands": {
+      "type": "object",
+      "required": ["green_min", "yellow_min"],
+      "properties": {
+        "green_min": { "type": "number", "minimum": 0, "maximum": 100 },
+        "yellow_min": { "type": "number", "minimum": 0, "maximum": 100 }
+      },
+      "additionalProperties": false
+    },
+    "required_rules": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "fail_on_missing_required_rules": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}

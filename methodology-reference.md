@@ -16,7 +16,7 @@ Traditional decomposition breaks systems along functional lines (OrderService, C
 | Layer | Role | Depends On |
 |-------|------|-----------|
 | **Client** | UI / API consumer | Managers |
-| **Manager** | Workflow orchestration (no logic, no data access) | Engines, Resource Accessors |
+| **Manager** | Workflow orchestration (sequencing only, no domain logic, no data access) | Engines, Resource Accessors |
 | **Engine** | Business logic (stateless, pure) | Utilities |
 | **Resource Accessor** | Data access abstraction | Utilities |
 | **Utility** | Cross-cutting concerns | Nothing (or other Utilities) |
@@ -28,6 +28,10 @@ The architecture's dependency graph directly determines what can be built in par
 
 ### Quality Gates
 Binary pass/fail at every phase transition. No exceptions, no "partial pass."
+
+Recommended enforcement artifacts:
+- `templates/gate-evidence-checklist-template.md` — objective evidence for each gate criterion
+- `templates/automated-compliance-rubric-template.md` — weighted compliance scoring and blocker rules
 
 ### The Cost of Defects
 
@@ -63,7 +67,7 @@ What's likely to evolve? What external factors could shift requirements? What as
 ## Phase 2: Product Definition — Deep Reference
 
 ### Requirements Structure
-Each requirement gets: **ID**, **Description**, **Priority** (MoSCoW), **Volatility** (High/Med/Low), **Acceptance Criteria**
+Each requirement gets: **ID**, **Description**, **Priority** (MoSCoW), **Volatility** (Stable/Volatile/Uncertain), **Acceptance Criteria**
 
 ### Use Case Analysis
 For each workflow: primary flow, alternative flows, exception flows, pre/post conditions, actors.
@@ -74,6 +78,8 @@ For each workflow: primary flow, alternative flows, exception flows, pre/post co
 - **Uncertain** — not enough info, needs validation
 
 These tags are critical input to architecture.
+
+Optional for prioritization: map tags to risk weighting during architecture analysis (Stable→Low, Volatile→High, Uncertain→Investigate first).
 
 ---
 

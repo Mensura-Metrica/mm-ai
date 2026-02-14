@@ -20,7 +20,7 @@ For each requirement, capture:
 - **ID** (REQ-001)
 - **Description** (clear, testable)
 - **Priority** (Must / Should / Could)
-- **Volatility** (High / Medium / Low) — How likely is this to change?
+- **Volatility** (Stable / Volatile / Uncertain) — How likely is this to change?
 - **Source** (who asked for it / which discovery insight)
 - **Acceptance criteria** (specific, measurable)
 
@@ -44,7 +44,7 @@ Use format: `As a [persona], I want [capability], so that [benefit]`
 Before moving to Phase 3, ALL must pass:
 - [ ] All personas defined with scenarios
 - [ ] Requirements complete with IDs and acceptance criteria
-- [ ] Every requirement tagged with volatility (High/Medium/Low)
+- [ ] Every requirement tagged with volatility (Stable/Volatile/Uncertain)
 - [ ] User stories written with acceptance criteria
 - [ ] Priority assigned to all requirements (Must/Should/Could)
 - [ ] All "Must" requirements have clear acceptance criteria

@@ -1,0 +1,21 @@
+{
+  "$schema": "./compliance-check-config.schema.json",
+  "policy": {
+    "minimum_weighted_score": 90,
+    "max_critical_failures": 0,
+    "max_high_failures": 0,
+    "require_blocking_conditions_empty": true
+  },
+  "bands": {
+    "green_min": 90,
+    "yellow_min": 75
+  },
+  "required_rules": [
+    "ARC-001",
+    "ARC-003",
+    "REQ-001",
+    "TST-001",
+    "TST-002"
+  ],
+  "fail_on_missing_required_rules": true
+}

@@ -7,7 +7,7 @@ applyTo: '**'
 You are working within the **MM-AI Methodology** — an IDesign-driven software development lifecycle. All architectural work follows these principles:
 
 ## IDesign Service Taxonomy
-- **Manager** — Orchestrates workflows. No business logic. No data access. Never calls other Managers.
+- **Manager** — Orchestrates workflows and sequencing. No domain logic. No data access. Never calls other Managers.
 - **Engine** — Pure business logic. Stateless. Never accesses data stores. Never calls Resource Accessors.
 - **Resource Accessor** — Abstracts data access. No business logic. Never calls Engines.
 - **Utility** — Cross-cutting concerns. Called by anyone. Calls only other Utilities.
@@ -24,7 +24,7 @@ You are working within the **MM-AI Methodology** — an IDesign-driven software 
 ## Phase Sequence
 Discovery → Product Definition → Architecture → Project Design → Implementation → QA → Deployment → Maintenance
 
-Each phase has a prompt file in `.github/prompts/` that can be invoked directly.
+Each phase has a prompt file in `.github/prompts/` in this repository that can be invoked directly.
 
 ## Artifact Chain
 Each phase produces artifacts that feed the next. Always keep previous phase outputs available as context.

@@ -1,0 +1,42 @@
+name: Compliance Check
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  compliance:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate compliance artifact paths
+        shell: pwsh
+        run: |
+          if (-not (Test-Path -LiteralPath './scripts/evaluate-compliance.ps1')) {
+            throw 'Missing evaluator script at ./scripts/evaluate-compliance.ps1'
+          }
+
+          if (-not (Test-Path -LiteralPath './.mm-ai/compliance-check-config.json')) {
+            if (-not (Test-Path -LiteralPath './templates/compliance-check-config.template.json')) {
+              throw 'Missing compliance config and template. Expected ./.mm-ai/compliance-check-config.json or ./templates/compliance-check-config.template.json.'
+            }
+
+            New-Item -ItemType Directory -Path './.mm-ai' -Force | Out-Null
+            Copy-Item -LiteralPath './templates/compliance-check-config.template.json' -Destination './.mm-ai/compliance-check-config.json'
+            Write-Host 'Bootstrapped ./.mm-ai/compliance-check-config.json from template.'
+          }
+
+          if (-not (Test-Path -LiteralPath './.mm-ai/out/compliance-report.json')) {
+            throw 'Missing compliance report at ./.mm-ai/out/compliance-report.json. Generate this report in CI before evaluation.'
+          }
+
+      - name: Evaluate compliance policy
+        shell: pwsh
+        run: |
+          ./scripts/evaluate-compliance.ps1 `
+            -ReportPath ./.mm-ai/out/compliance-report.json `
+            -ConfigPath ./.mm-ai/compliance-check-config.json

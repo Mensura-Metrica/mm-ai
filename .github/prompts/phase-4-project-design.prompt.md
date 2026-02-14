@@ -41,7 +41,7 @@ For each risk:
 ### 5. Resource Allocation
 - Map activities to skills/roles
 - Identify bottlenecks
-- Buffer allocation (15-25%)
+- Buffer allocation (25-50% of critical path duration, adjusted by confidence)
 
 ## Gate 4 Checklist
 Before moving to Phase 5, ALL must pass:
@@ -50,7 +50,7 @@ Before moving to Phase 5, ALL must pass:
 - [ ] Critical path identified
 - [ ] Build order follows call graph (bottom-up)
 - [ ] All high risks have mitigations
-- [ ] Schedule includes buffers (15-25%)
+- [ ] Schedule includes buffers (25-50% of critical path duration, adjusted by confidence)
 - [ ] Resource assignments match required skills
 - [ ] No activity without a service mapping
 - [ ] Estimation assumptions documented

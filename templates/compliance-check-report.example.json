@@ -1,0 +1,25 @@
+{
+  "project": "Sample Product",
+  "assessment_scope": "PR #123",
+  "date": "2026-02-14",
+  "gate_recommendation": "Pass",
+  "blocking_conditions": [],
+  "rules": [
+    {
+      "rule_id": "ARC-001",
+      "result": 1,
+      "weight": 10,
+      "severity": "Critical",
+      "notes": "No forbidden layer skipping detected.",
+      "evidence": "reports/dependency-graph.md"
+    },
+    {
+      "rule_id": "REQ-001",
+      "result": 0.5,
+      "weight": 9,
+      "severity": "Critical",
+      "notes": "Some Must requirements missing test mapping.",
+      "evidence": "reports/traceability.md"
+    }
+  ]
+}
