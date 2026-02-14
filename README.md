@@ -43,6 +43,8 @@ Use `docs/strict-orchestration-pack.md` when you need tighter multi-agent govern
 
 ## Quick Start (Template Consumers)
 
+For a practical first-session guide, use: `docs/day-1-runbook.md`.
+
 1. **Create repo from template**
 	- Click **Use this template** and create your new project repository.
 
@@ -83,6 +85,7 @@ Click **"Use this template"** on GitHub to start a new project. You get:
 - `templates/compliance-check-report.example.json` — Example report payload for tool/pipeline integration
 - `scripts/evaluate-compliance.ps1` — CI evaluator script that returns non-zero on policy violations
 - `docs/compliance-ci-setup.md` — Setup guide for running compliance checks on pull requests
+- `docs/day-1-runbook.md` — One-session startup guide for new projects (solo-lean and solo-strict)
 - `docs/idesign-standards-reference.md` — External standards links and adoption guidance
 - `docs/adopted-standards.md` — Concrete enforceable standards baseline for template consumers
 - `docs/strict-orchestration-pack.md` — Optional strict multi-agent governance profile and operating model
