@@ -20,6 +20,12 @@
 |-----------|----------------------|
 | [Constraint] | [How it shapes the design] |
 
+### 1.3 C4 Modeling Scope
+- **C1 (System Context)**: mandatory
+- **C2 (Container)**: mandatory
+- **C3 (Component)**: mandatory for key containers
+- **C4 (Code)**: optional by default; required for high-risk/high-volatility components
+
 ## 2. Volatility Analysis
 
 ### 2.1 Identified Volatility Axes
@@ -57,6 +63,26 @@ Operations:
 ```
 
 [Repeat for each service]
+
+## 3A. C4 Diagrams
+
+### 3A.1 C1 — System Context Diagram
+[Show people/actors, external systems, and the product system boundary]
+
+### 3A.2 C2 — Container Diagram
+[Show major containers/runtime units, data stores, and protocols between them]
+
+### 3A.3 C3 — Component Diagrams
+[For each key container, show internal components and interfaces]
+
+### 3A.4 C4 — Code Diagrams (Focused)
+[Only for high-risk/high-volatility components where code-level structure affects architectural decisions]
+
+### 3A.5 Diagram Consistency Checks
+- [ ] Terminology consistent across C1/C2/C3/C4
+- [ ] Relationships and data flow are consistent across levels
+- [ ] Every key component maps to service taxonomy (Manager/Engine/RA/Utility)
+- [ ] Any ambiguity found while diagramming is logged in the Uncertainty Log (`UQ-###`)
 
 ## 4. Call Graph
 

@@ -4,6 +4,19 @@ All notable changes to this project template are documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
+## [1.0.2] - 2026-02-15
+
+### Added
+- Mandatory C4 deliverable set in Phase 3 architecture workflow: C1 (System Context), C2 (Container), C3 (Component), and focused C4 Code diagrams for high-risk/high-volatility components.
+- Dedicated C4 modeling sections and consistency checks in `templates/architecture-document-template.md`.
+
+### Changed
+- Strengthened Gate 3 to require C4 diagram completeness and explicit rationale when C4 Code diagrams are omitted.
+- Updated Phase 3 methodology guidance to align architecture visuals with volatility analysis and cross-level naming consistency.
+
+### Notes
+- This update improves architecture communication fidelity and reduces ambiguity during Phase 3 handoff into project design.
+
 ## [1.0.1] - 2026-02-15
 
 ### Added

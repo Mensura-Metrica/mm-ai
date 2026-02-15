@@ -141,6 +141,11 @@ The interface IS the architecture. Define per operation:
 - Track open questions with impact and resolution status (Resolved/Deferred with owner/date)
 - Do not pass Phase 3 with unresolved critical questions affecting service boundaries, interfaces, or call graph
 
+### Architecture Visuals (C4)
+- Produce **C1 System Context**, **C2 Container**, and **C3 Component** diagrams in Phase 3
+- Produce focused **C4 Code** diagrams for high-risk/high-volatility components when code-level design affects architectural decisions
+- Ensure naming and relationships are consistent across C4 levels and traceable to volatility axes
+
 ### Architecture Review (6 Areas)
 1. **Volatility alignment** — each change affects exactly one service?
 2. **Taxonomy compliance** — Manager doing logic? Engine touching DB?

@@ -61,6 +61,18 @@ For each service, define:
 - No service does "too much" — single responsibility per volatility
 - Design decisions reviewed against selected architecture standards (where adopted)
 
+### 4.5 C4 Diagram Set (Required)
+Produce a C4-aligned diagram set for architectural clarity:
+- **C1 System Context**: system boundary, users/actors, external systems
+- **C2 Container**: major deployable/runtime containers and their interactions
+- **C3 Component**: internal components for each key container (at minimum Manager/Engine/RA/Utility boundaries)
+- **C4 Code (Focused, Optional)**: only for high-risk or high-volatility components where code-level structure materially affects architecture decisions
+
+Diagram quality expectations:
+- Every diagram must be traceable to requirements and volatility axes
+- Names and relationships must be consistent across C1/C2/C3
+- Ambiguities discovered while diagramming must be logged as `UQ-###`
+
 ### 5. Uncertainty Resolution Pass
 - Enumerate all open architecture questions (`UQ-###`)
 - For each open question, ask the minimum clarifying question needed to proceed
@@ -80,6 +92,10 @@ Before moving to Phase 4, ALL must pass:
 - [ ] Error taxonomy per service
 - [ ] Every requirement traceable to a service
 - [ ] No service without a volatility justification
+- [ ] C1 System Context diagram produced and reviewed
+- [ ] C2 Container diagram produced and reviewed
+- [ ] C3 Component diagrams produced for key containers
+- [ ] C4 Code diagrams produced for high-risk components (or explicit rationale for omission)
 - [ ] All architecture uncertainties logged and statused (Resolved or Deferred with owner/date)
 - [ ] No unresolved critical architecture questions
 - [ ] Standards alignment documented (if standards are in scope for the project)
