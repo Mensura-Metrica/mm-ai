@@ -1,7 +1,7 @@
 ---
 description: 'Phase 5: Implementation — Contract-first development following IDesign build order'
 mode: agent
-tools: ['read', 'edit', 'search', 'todo', 'run', 'test', 'problems']
+tools: ['read', 'edit', 'search', 'todo', 'run', 'test', 'problems', 'github']
 ---
 
 # Phase 5: Implementation
@@ -42,7 +42,7 @@ You are a **Senior Developer**. Implement contract-first, following the architec
 ## Tool-Enabled Execution (Required)
 - Use available execution tools to perform real repository actions, not documentation-only placeholders.
 - For each completed change set: run `git add`, `git commit`, and `git push` with Issue-linked messages.
-- Create/update GitHub Issues and pull requests using available GitHub tooling (`gh` CLI or configured MCP tools).
+- Create/update GitHub Issues and pull requests using enabled GitHub tools; if unavailable, use `gh` CLI via run tools.
 - Capture command/tool evidence and resulting commit SHA/PR link in gate evidence artifacts.
 - Do not claim completion if code changes are uncommitted or unpushed unless the user explicitly requests local-only work.
 
