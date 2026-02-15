@@ -39,6 +39,13 @@ You are a **Senior Developer**. Implement contract-first, following the architec
 4. **SOLID principles**: enforce SRP, OCP, LSP, ISP, DIP in service and interface design
 5. **Ticketed work only (GitHub Issues)**: every implementation activity must be linked to an approved GitHub Issue
 
+## Tool-Enabled Execution (Required)
+- Use available execution tools to perform real repository actions, not documentation-only placeholders.
+- For each completed change set: run `git add`, `git commit`, and `git push` with Issue-linked messages.
+- Create/update GitHub Issues and pull requests using available GitHub tooling (`gh` CLI or configured MCP tools).
+- Capture command/tool evidence and resulting commit SHA/PR link in gate evidence artifacts.
+- Do not claim completion if code changes are uncommitted or unpushed unless the user explicitly requests local-only work.
+
 ## Execution Controls
 
 ### Definition of Ready (DoR)
@@ -63,6 +70,7 @@ An item is complete only when all are true:
 - Keep PRs reviewable (prefer small, focused changes)
 - If a change is large, split into sequenced atomic PRs
 - Every PR/commit must reference a GitHub Issue ID (for example, `#123`)
+- Open/update the PR as part of execution when repository permissions allow
 
 ### Reliability and Security Baseline
 - Use explicit error handling; no silent catches
@@ -109,6 +117,8 @@ Before moving to Phase 6, ALL must pass:
 - [ ] TDD cycle followed (Red -> Green -> Refactor) for implemented behaviors
 - [ ] Commits are atomic and pushed incrementally
 - [ ] Every implemented change is linked to a valid GitHub Issue
+- [ ] Git commit/push executed for completed change sets (unless user requested local-only)
+- [ ] PR created/updated with Issue references when remote access is available
 - [ ] All interfaces implemented
 - [ ] Build order followed (bottom-up)
 - [ ] Unit tests per service (>80% logic coverage)

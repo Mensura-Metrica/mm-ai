@@ -248,6 +248,13 @@ Sprint 0: Utilities + CI/CD → Early: Engines + RAs → Middle: Managers + inte
 - Commits and pull requests reference the GitHub Issue ID
 - GitHub Issue status reflects real delivery state and links to evidence (tests, reviews, ADRs, docs)
 
+### Git Operation Constraint Handling
+When the execution environment does not allow direct `git commit`/`git push` by the agent:
+- Treat the agent as a change producer and the human as VCS executor.
+- Require a handoff packet per change set: intended commit message(s), staged file list, test/verification evidence, and Issue linkage.
+- Record the human-executed commit SHA and PR link in the AI interaction log/evidence checklist.
+- Do not mark Implementation Done until the commit/PR evidence is captured.
+
 ---
 
 ## Phase 6: QA — Deep Reference
@@ -269,6 +276,11 @@ Sprint 0: Utilities + CI/CD → Early: Engines + RAs → Middle: Managers + inte
 - Dependency direction — all correct
 - No circular dependencies
 
+### QA Evidence Under Git Constraints
+If commit/push is human-executed:
+- QA sign-off references the human commit SHA(s) and the exact test evidence used for the decision.
+- Any test rerun after handoff must be logged as a distinct evidence event.
+
 ### Defect Severity
 Critical (arch violation, security) → fix immediately | High (core workflow bug) → fix before release | Medium → next iteration | Low → when convenient
 
@@ -287,6 +299,11 @@ Error rate > 2x baseline | Response time > 2x baseline | Critical functionality 
 
 Rollback in reverse order: Clients → Managers → Engines/RAs → Utilities
 
+### Deployment Traceability Under Git Constraints
+If deployment is sourced from human-created commits/PRs:
+- Release evidence must include the final merged commit SHA, tag/release identifier, and gate checklist references.
+- Deployment approval is blocked if SHA-to-evidence mapping is incomplete.
+
 ---
 
 ## Phase 8: Maintenance — Deep Reference
@@ -304,6 +321,10 @@ Was this change predicted? → Architecture is working. Surprise? → Update vol
 2. **Design debt** — poor abstractions, leaky interfaces
 3. **Code debt** — duplication, missing tests
 4. **Infrastructure debt** — manual processes, outdated dependencies
+
+### Maintenance Continuity Under Git Constraints
+- Keep a continuous chain from AI output → human commit SHA → issue status updates.
+- Treat missing SHA links in maintenance records as a process defect to be corrected before closure.
 
 ### When to Re-Architect
 - Volatility analysis fundamentally wrong

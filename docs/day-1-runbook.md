@@ -80,3 +80,15 @@ Pause and escalate to architect when:
 - A mandatory standards rule cannot be satisfied.
 - A design decision crosses service boundaries unexpectedly.
 - Planned file edits exceed approved scope in strict mode.
+
+## Git Handoff Mode (When Agent Cannot Commit/Push)
+
+If your tool environment restricts direct `git commit`/`git push`:
+- Keep using the phase prompts normally; implementation and QA work still proceeds.
+- For each completed change set, require a handoff packet containing:
+  - proposed commit message,
+  - list of changed files,
+  - verification/test evidence,
+  - linked GitHub Issue.
+- Human executes `git add/commit/push` and records resulting SHA/PR in the AI interaction log and gate evidence.
+- Do not close Phase 5/6/7/8 gates without SHA-linked evidence.
