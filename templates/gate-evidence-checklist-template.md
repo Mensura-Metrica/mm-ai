@@ -26,6 +26,7 @@ Use this template at the end of each phase to prove gate readiness with objectiv
 | Artifact Type | Required | Produced | Location | Version |
 |---------------|----------|----------|----------|---------|
 | Product Brief / PRD / Architecture / Plan / Test Plan | [Yes/No] | [Yes/No] | [Path] | [vX.Y] |
+| GitHub Issues Register (IDs, status, links) | [Yes/No] | [Yes/No] | [Path/URL] | [Date] |
 | Traceability Matrix | [Yes/No] | [Yes/No] | [Path] | [vX.Y] |
 | Test Results | [Yes/No] | [Yes/No] | [Path] | [Run ID] |
 | Risk Register Update | [Yes/No] | [Yes/No] | [Path] | [Date] |
@@ -36,6 +37,7 @@ Use this template at the end of each phase to prove gate readiness with objectiv
 |--------|--------|--------|--------|-------|
 | Requirements discovery/refinement iteration cycles completed | [>=2 for Gate 1/2] | [#] | [Pass/Fail] | |
 | Critical unresolved requirement questions | [0 or approved exceptions] | [#] | [Pass/Fail] | |
+| Work items with traceable GitHub Issue IDs and status | 100% | [%] | [Pass/Fail] | |
 | Requirements traceability completeness | 100% | [%] | [Pass/Fail] | |
 | Open Critical defects | 0 | [#] | [Pass/Fail] | |
 | Open High defects | [Threshold] | [#] | [Pass/Fail] | |

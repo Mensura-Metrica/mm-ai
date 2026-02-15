@@ -218,6 +218,12 @@ Sprint 0: Utilities + CI/CD → Early: Engines + RAs → Middle: Managers + inte
 - [ ] Integration tests pass
 - [ ] Code reviewed, no warnings
 - [ ] Committed with meaningful message
+- [ ] Linked GitHub Issue updated with evidence and final status
+
+### Work Tracking Discipline
+- Every implementation change must map to a GitHub Issue
+- Commits and pull requests reference the GitHub Issue ID
+- GitHub Issue status reflects real delivery state and links to evidence (tests, reviews, ADRs, docs)
 
 ---
 

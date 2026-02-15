@@ -4,6 +4,21 @@ All notable changes to this project template are documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
+## [1.0.4] - 2026-02-15
+
+### Added
+- Phase 5 implementation controls for TDD-first execution, atomic delivery cadence, quality-first expectations, and explicit SOLID enforcement.
+- Definition of Ready (DoR) and Definition of Done (DoD) checks in implementation guidance.
+- Explicit GitHub Issues traceability requirement for implementation work, commits, and pull requests.
+
+### Changed
+- Gate 5 checklist expanded to include TDD evidence, atomic delivery behavior, SOLID conformance review, and GitHub Issue linkage/update requirements.
+- Gate evidence template updated to include a GitHub Issues register and ticket traceability quality signal.
+- Methodology reference updated with GitHub-Issue-based work tracking discipline.
+
+### Notes
+- This update strengthens implementation governance without changing architecture or phase sequencing.
+
 ## [1.0.3] - 2026-02-15
 
 ### Added
