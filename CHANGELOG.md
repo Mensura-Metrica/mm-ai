@@ -4,6 +4,21 @@ All notable changes to this project template are documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
+## [1.0.10] - 2026-02-15
+
+### Added
+- Tool-enabled execution requirements in phase prompts to perform real repository actions (`git add`/`git commit`/`git push`) and GitHub Issue/PR updates during active phase work.
+- GitHub tool capability enabled in prompt frontmatter across all phase prompts (Phase 1 through Phase 8).
+- GitHub traceability execution requirements added to early lifecycle phases (Discovery, Product Definition, Architecture, Project Design).
+
+### Changed
+- Phases 5-8 now explicitly require executable VCS/GitHub actions for completion evidence, including commit SHA and PR linkage.
+- Added explicit fallback guidance to use `gh` CLI via run tools when direct GitHub tools are unavailable in-session.
+- Methodology/runbook guidance updated to define Git handoff mode expectations under constrained execution environments.
+
+### Notes
+- This update closes the execution gap between documented governance requirements and actual tool-enabled phase behavior.
+
 ## [1.0.9] - 2026-02-15
 
 ### Added
