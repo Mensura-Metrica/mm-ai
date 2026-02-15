@@ -4,6 +4,19 @@ All notable changes to this project template are documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
+## [1.0.7] - 2026-02-15
+
+### Added
+- Deployment portability and platform-agnostic constraints in Phase 7, including open standards preference and IaC-driven reproducibility.
+- Explicit requirement to document vendor-specific dependencies with portability impact and migration/fallback planning.
+
+### Changed
+- Gate 7 now verifies portability/agnostic infrastructure documentation and justification of any vendor lock-in decisions.
+- Operational readiness guidance now includes migration/failover considerations for critical services.
+
+### Notes
+- This update reduces infrastructure lock-in risk and improves long-term deployment flexibility.
+
 ## [1.0.6] - 2026-02-15
 
 ### Added
