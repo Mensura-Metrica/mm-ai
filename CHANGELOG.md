@@ -4,6 +4,17 @@ All notable changes to this project template are documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
+## [1.0.3] - 2026-02-15
+
+### Added
+- Universal Tone Contract added to all phase prompts (`phase-1` through `phase-8`) to enforce consistent facilitation behavior.
+
+### Changed
+- Standardized prompt tone expectations across the full lifecycle around: facilitation, structured output, evidence-based decisions, explicit keep/change/defer decisions, transparent uncertainty handling, and gate-discipline.
+
+### Notes
+- This update improves cross-phase consistency in AI/user collaboration without changing the underlying phase workflow.
+
 ## [1.0.2] - 2026-02-15
 
 ### Added
