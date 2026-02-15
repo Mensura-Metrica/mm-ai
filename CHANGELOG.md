@@ -4,6 +4,19 @@ All notable changes to this project template are documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
+## [1.0.5] - 2026-02-15
+
+### Added
+- Technology Selection Matrix requirement in Phase 4 to compare viable implementation stacks objectively.
+- Project plan template section for scoring options against industry prevalence, cost to build, cost to run, and portability.
+
+### Changed
+- Gate 4 now requires technology decision rationale documentation before implementation.
+- Methodology reference updated to treat preferred stacks (for example C#) as valid options but not automatic defaults.
+
+### Notes
+- This update formalizes technology choice as an evidence-based decision with transparent tradeoff documentation.
+
 ## [1.0.4] - 2026-02-15
 
 ### Added

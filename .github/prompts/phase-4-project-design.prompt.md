@@ -58,6 +58,17 @@ For each risk:
 - Identify bottlenecks
 - Buffer allocation (25-50% of critical path duration, adjusted by confidence)
 
+### 6. Technology Selection Matrix
+When multiple implementation stacks are viable, evaluate options explicitly before committing.
+- Compare at least 2 realistic options (including preferred stack where applicable, e.g., C#)
+- Score each option against:
+	- **Industry prevalence** (hiring ecosystem, community maturity, long-term support)
+	- **Cost to build** (delivery speed, team familiarity, tooling productivity)
+	- **Cost to run** (hosting/runtime/license/operations costs)
+	- **Portability** (cloud/vendor/runtime portability and migration effort)
+- Add tie-breakers only after core criteria (for example: existing team strength in C#)
+- Record the final decision and rationale in the project plan
+
 ## Gate 4 Checklist
 Before moving to Phase 5, ALL must pass:
 - [ ] Every service has Design/Build/Test/Integrate activities
@@ -69,6 +80,7 @@ Before moving to Phase 5, ALL must pass:
 - [ ] Resource assignments match required skills
 - [ ] No activity without a service mapping
 - [ ] Estimation assumptions documented
+- [ ] Technology selection matrix completed and decision rationale documented
 - [ ] Project plan document produced
 
 When all items pass: **"Gate 4 passed. Ready for Phase 5: Implementation."**

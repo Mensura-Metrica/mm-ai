@@ -183,6 +183,21 @@ Longest dependency chain = minimum project duration. Shorten only by: reducing s
 Quantify: Probability (1-5) × Impact (1-5) = Risk Score
 15-25: Critical (must mitigate) | 8-14: High (plan mitigation) | 4-7: Medium (monitor)
 
+### Technology Selection Framework
+When more than one stack is feasible, use a scored decision matrix before implementation.
+
+Minimum required criteria:
+- **Industry prevalence** — ecosystem maturity, talent availability, support horizon
+- **Cost to build** — team productivity, learning curve, implementation effort
+- **Cost to run** — runtime/infrastructure/license/operations cost profile
+- **Portability** — ability to move across environments/vendors with low friction
+
+Guidance:
+- Compare at least two credible options
+- Include preferred stack (for example C#) as an option, but do not auto-select it
+- Use team preference only as a tie-breaker when objective scores are close
+- Document decision rationale and assumptions in project artifacts
+
 ---
 
 ## Phase 5: Implementation — Deep Reference

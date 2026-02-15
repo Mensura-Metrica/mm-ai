@@ -68,6 +68,20 @@
 |----|------|----------|------|--------|-------|------------|---------|-------|
 | R-001 | [Description] | [Tech/Schedule/Scope/Resource/Org] | [1-5] | [1-5] | [P×I] | [Action] | [Observable event] | [Name] |
 
+## 5.1 Technology Options Assessment
+
+| Option | Industry Prevalence (1-5) | Cost to Build (1-5) | Cost to Run (1-5) | Portability (1-5) | Notes |
+|--------|----------------------------|---------------------|-------------------|-------------------|-------|
+| [Option A, e.g., C#/.NET] | [Score] | [Score] | [Score] | [Score] | [Rationale] |
+| [Option B] | [Score] | [Score] | [Score] | [Score] | [Rationale] |
+
+**Decision**: [Selected technology]
+
+**Decision Rationale**:
+- [Why this option best fits the project's constraints and goals]
+- [Tradeoffs accepted]
+- [If scores were close, tie-breaker used (for example, team proficiency)]
+
 ## 6. External Dependencies
 
 | Dependency | Owner | Expected By | Fallback | Status |
