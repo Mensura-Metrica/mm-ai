@@ -4,6 +4,24 @@ All notable changes to this project template are documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
+## [1.0.1] - 2026-02-15
+
+### Added
+- Live facilitation cadence (`Synthesize -> Challenge -> Decide`) in phase prompts to increase human-in-the-loop interaction.
+- Explicit iterative requirements loops for Discovery (Why clarity) and Product Definition (What clarity).
+- Mandatory architecture uncertainty protocol with explicit `UQ-###` tracking and targeted clarifying questions.
+- Architecture uncertainty log section in `templates/architecture-document-template.md` with closure rules.
+- Iteration and open-question tracking sections in `templates/product-brief-template.md` and `templates/prd-template.md`.
+
+### Changed
+- Strengthened Gate 1/2/3 criteria to prevent progression with unresolved critical contradictions or architecture uncertainties.
+- Updated phases 4-8 prompts to require section-level user confirmations and explicit uncertainty surfacing.
+- Expanded gate evidence guidance to include iteration-cycle completion and unresolved-requirement checks.
+- Updated methodology and README principles to emphasize iterative requirements convergence before architecture.
+
+### Notes
+- This release focuses on decision quality and interaction depth, while keeping the existing phase flow and artifact set intact.
+
 ## [1.0.0] - 2026-02-14
 
 ### Added
