@@ -26,7 +26,7 @@ Use this template at the end of each phase to prove gate readiness with objectiv
 | Artifact Type | Required | Produced | Location | Version |
 |---------------|----------|----------|----------|---------|
 | Product Brief / PRD / Architecture / Plan / Test Plan | [Yes/No] | [Yes/No] | [Path] | [vX.Y] |
-| AI Interaction Log (who/what/where/when) | [Yes/No] | [Yes/No] | [Path] | [Date] |
+| AI Interaction Log (who/what/where/when + replay fields) | [Yes/No] | [Yes/No] | [Path] | [Date] |
 | GitHub Issues Register (IDs, status, links) | [Yes/No] | [Yes/No] | [Path/URL] | [Date] |
 | Traceability Matrix | [Yes/No] | [Yes/No] | [Path] | [vX.Y] |
 | Test Results | [Yes/No] | [Yes/No] | [Path] | [Run ID] |
@@ -37,6 +37,8 @@ Use this template at the end of each phase to prove gate readiness with objectiv
 | Signal | Target | Actual | Status | Notes |
 |--------|--------|--------|--------|-------|
 | AI interactions logged with complete who/what/where/when fields | 100% | [%] | [Pass/Fail] | |
+| AI interactions marked replay-ready with required evidence | 100% | [%] | [Pass/Fail] | |
+| Replay verification runs completed for selected critical interactions | [Policy target] | [%/#] | [Pass/Fail] | |
 | Requirements discovery/refinement iteration cycles completed | [>=2 for Gate 1/2] | [#] | [Pass/Fail] | |
 | Critical unresolved requirement questions | [0 or approved exceptions] | [#] | [Pass/Fail] | |
 | Work items with traceable GitHub Issue IDs and status | 100% | [%] | [Pass/Fail] | |

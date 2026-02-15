@@ -79,7 +79,7 @@ Click **"Use this template"** on GitHub to start a new project. You get:
 - `templates/standards-traceability-matrix-template.md` — Trace standards to phase gates, evidence, and CI checks
 - `templates/agent-handoff-contract-template.md` — Standardized per-step handoff I/O and allowed scope contract
 - `templates/execution-control-protocol-template.md` — Feed/pause/kill/escalate control model and triggers
-- `templates/ai-interaction-log-template.md` — Audit log for AI interactions (who instructed what, where, and when)
+- `templates/ai-interaction-log-template.md` — Audit/replay log for AI interactions (who instructed what, where, when, and how to replay)
 - `templates/recovery-playbook-template.md` — Recovery workflow for drift, blockages, and execution failures
 - `templates/compliance-check-config.template.json` — Policy thresholds and required rules for CI gating
 - `templates/compliance-check-report.schema.json` — JSON schema for machine-readable compliance reports

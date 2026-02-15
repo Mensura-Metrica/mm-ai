@@ -32,9 +32,9 @@ Allowed states:
 
 ## 4) Decision Log
 
-| Timestamp | Step ID | Event | Trigger | Action Taken | Decision By |
-|-----------|---------|-------|---------|--------------|-------------|
-| [time] | [step] | [pause/escalate/etc.] | [reason] | [what happened] | [name/role] |
+| Timestamp | Step ID | Interaction ID | Event | Trigger | Action Taken | Decision By | Evidence Ref | Replay Sequence |
+|-----------|---------|----------------|-------|---------|--------------|-------------|--------------|-----------------|
+| [time] | [step] | [AI-0001] | [pause/escalate/etc.] | [reason] | [what happened] | [name/role] | [log/path/url] | [order index or range] |
 
 ## 5) Exit Criteria
 

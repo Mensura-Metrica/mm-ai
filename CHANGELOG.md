@@ -4,6 +4,21 @@ All notable changes to this project template are documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
+## [1.0.9] - 2026-02-15
+
+### Added
+- Replay-focused AI interaction log schema with ordered sequence IDs, input snapshot references, tool/command evidence, output links, and resulting commit SHA.
+- Replay procedure steps for reconstructing and validating AI-assisted execution history.
+- Gate evidence signals for replay readiness and replay verification coverage.
+
+### Changed
+- Universal prompt tone contract updated across phases 1-8 to require both auditability and replayability.
+- Execution control protocol decision log expanded with interaction IDs and replay sequence/evidence fields.
+- Methodology and README guidance clarified to emphasize clear, forensic-quality AI interaction records.
+
+### Notes
+- This update improves both traceability (how we got here) and deterministic replay capability for critical decisions.
+
 ## [1.0.8] - 2026-02-15
 
 ### Added

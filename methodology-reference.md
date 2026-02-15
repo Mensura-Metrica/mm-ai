@@ -32,6 +32,8 @@ Binary pass/fail at every phase transition. No exceptions, no "partial pass."
 ### AI Interaction Auditability
 - Log all material AI interactions with: who instructed, what was instructed, where it applied, and when it occurred
 - Link interaction records to affected artifacts and GitHub Issues where applicable
+- Capture replay evidence so decisions/actions can be reconstructed in sequence
+- Require clear, unambiguous log text for forensic traceability
 - Treat missing interaction logs as missing gate evidence
 
 Recommended enforcement artifacts:
