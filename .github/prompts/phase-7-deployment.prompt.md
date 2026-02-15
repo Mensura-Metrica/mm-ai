@@ -49,6 +49,7 @@ Follow the call graph (same as build order):
 - Rollback procedure per service
 - Health checks and monitoring
 - Smoke tests post-deployment
+- Automated smoke suite executed by deployment pipeline before release sign-off
 
 ### 5. Operational Readiness
 - Monitoring & alerting at service boundaries
@@ -65,7 +66,7 @@ Before moving to Phase 8, ALL must pass:
 - [ ] Monitoring covers service boundaries
 - [ ] Staging deployment successful
 - [ ] Production deployment successful
-- [ ] Smoke tests pass in production
+- [ ] Automated smoke tests pass in production pipeline
 - [ ] Runbooks written for critical failure scenarios
 
 When all items pass: **"Gate 7 passed. System is live. Moving to Phase 8: Maintenance."**

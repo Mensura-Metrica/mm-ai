@@ -22,6 +22,19 @@
 ## 2. Test Strategy Summary
 [Reference to the full Test Strategy document. Summary of key testing approaches for this release.]
 
+## 2.1 Automation Strategy
+| Test Layer | Automation Target | Pipeline Trigger | Owner | Notes |
+|-----------|-------------------|------------------|-------|-------|
+| Unit | [e.g., >=90% automated] | [PR/CI] | [Name/Role] | |
+| Integration | [e.g., 100% repeatable scenarios automated] | [PR/CI] | [Name/Role] | |
+| System / Smoke | [Critical journeys automated] | [Deploy pipeline] | [Name/Role] | |
+| Regression | [Critical/High defect coverage automated] | [PR + pre-release] | [Name/Role] | |
+
+## 2.2 Manual Test Exception Register
+| Test ID | Reason Manual | Automation Plan | Owner | Target Date |
+|--------|----------------|-----------------|-------|-------------|
+| [ID] | [Why not yet automated] | [How/when it will be automated] | [Name/Role] | [Date] |
+
 ## 3. Architecture Compliance Tests
 
 ### 3.1 Taxonomy Verification
@@ -54,6 +67,11 @@
 |----|-------------|-------|-------|----------------|--------|
 | IT-001 | [What's tested] | [Test data/config] | [Steps] | [Expected] | [Pass/Fail/Blocked] |
 
+### 4.2.1 Integration Automation Details
+| Suite | Execution | Environment | Trigger | Report Location |
+|------|-----------|-------------|---------|-----------------|
+| [Suite name] | [Automated/Manual] | [Env] | [PR/Nightly/Release] | [Path/URL] |
+
 ### 4.3 System / End-to-End Tests
 
 #### [Use Case: UC-XXX]
@@ -61,6 +79,11 @@
 |----|-------------|---------------|-------|----------------|--------|
 | ST-001 | [Happy path] | [Setup] | [Steps] | [Expected] | [Pass/Fail/Blocked] |
 | ST-002 | [Error path] | [Setup] | [Steps] | [Expected error handling] | [Pass/Fail/Blocked] |
+
+### 4.3.1 Smoke Suite
+| Smoke ID | Critical Journey | Automated | Trigger | Result Location |
+|---------|-------------------|-----------|---------|-----------------|
+| SM-001 | [Journey] | [Yes/No] | [Post-deploy/Release] | [Path/URL] |
 
 ### 4.4 Non-Functional Tests
 
@@ -101,6 +124,19 @@
 | Integration | | | | | [%] |
 | System | | | | | [%] |
 | Non-Functional | | | | | [%] |
+
+## 8.1 Automation Coverage Summary
+| Level | Automated Cases | Manual Cases | Automation % | Target % | Status |
+|------|------------------|--------------|--------------|----------|--------|
+| Unit | | | [%] | [%] | [Pass/Fail] |
+| Integration | | | [%] | [%] | [Pass/Fail] |
+| Smoke | | | [%] | [%] | [Pass/Fail] |
+| Regression | | | [%] | [%] | [Pass/Fail] |
+
+## 8.2 Pipeline Execution Evidence
+| Pipeline Run | Trigger | Suites Executed | Outcome | Evidence Link |
+|-------------|---------|-----------------|---------|---------------|
+| [Run ID] | [PR/Deploy/Release] | [Suites] | [Pass/Fail] | [URL/Path] |
 
 ## 9. Sign-Off
 | Role | Name | Decision | Date |

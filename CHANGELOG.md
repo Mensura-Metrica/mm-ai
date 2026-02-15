@@ -4,6 +4,19 @@ All notable changes to this project template are documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
+## [1.0.6] - 2026-02-15
+
+### Added
+- Automation-first QA policy in Phase 6, prioritizing automated integration, smoke, and regression testing.
+- Test plan sections for automation strategy, manual-test exception tracking, automation coverage, and pipeline execution evidence.
+
+### Changed
+- Gate 6 now requires automated integration, smoke, and regression coverage with explicit handling for manual-only exceptions.
+- Deployment guidance and Gate 7 now require pipeline-executed automated smoke validation before release sign-off.
+
+### Notes
+- This update increases release confidence by shifting QA evidence toward repeatable, CI/CD-executed automation.
+
 ## [1.0.5] - 2026-02-15
 
 ### Added
