@@ -4,6 +4,20 @@ All notable changes to this project template are documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
+## [1.0.8] - 2026-02-15
+
+### Added
+- New `templates/ai-interaction-log-template.md` to capture AI interaction traceability (who instructed what, where, and when).
+- Methodology and gate evidence references for AI interaction audit artifacts.
+
+### Changed
+- Universal Tone Contract across phases 1-8 now includes mandatory AI interaction audit logging.
+- Gate evidence artifact inventory and quality signals now include AI interaction log completeness checks.
+- README template inventory updated to include the AI interaction log template.
+
+### Notes
+- This update establishes a consistent audit trail for AI-assisted decisions and execution history.
+
 ## [1.0.7] - 2026-02-15
 
 ### Added

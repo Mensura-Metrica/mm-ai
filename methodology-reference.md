@@ -29,8 +29,14 @@ The architecture's dependency graph directly determines what can be built in par
 ### Quality Gates
 Binary pass/fail at every phase transition. No exceptions, no "partial pass."
 
+### AI Interaction Auditability
+- Log all material AI interactions with: who instructed, what was instructed, where it applied, and when it occurred
+- Link interaction records to affected artifacts and GitHub Issues where applicable
+- Treat missing interaction logs as missing gate evidence
+
 Recommended enforcement artifacts:
 - `templates/gate-evidence-checklist-template.md` — objective evidence for each gate criterion
+- `templates/ai-interaction-log-template.md` — structured audit trail of AI interactions and decisions
 - `templates/automated-compliance-rubric-template.md` — weighted compliance scoring and blocker rules
 - `docs/idesign-standards-reference.md` — external standards references and adoption checklist
 - `docs/adopted-standards.md` and `templates/adopted-standards-checklist-template.md` — enforceable project standards and selected-rule declaration
