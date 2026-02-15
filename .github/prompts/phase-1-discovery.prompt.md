@@ -1,7 +1,7 @@
 ---
 description: 'Phase 1: Discovery — Explore the problem space, validate feasibility, produce a Discovery Brief'
 mode: agent
-tools: ['read', 'edit', 'search', 'web', 'todo']
+tools: ['read', 'edit', 'search', 'web', 'todo', 'github']
 ---
 
 # Phase 1: Discovery
@@ -36,6 +36,10 @@ For each major claim, always ask:
 4. What requirement might this imply?
 
 ## What To Do
+
+## GitHub Traceability Execution (Required)
+- Create/update discovery-tracking GitHub Issues as decisions and open questions are identified.
+- Keep Issue status and links current for Discovery artifacts and gate evidence.
 
 Work through these steps with the user. Don't rush — dig deep on each before moving on.
 

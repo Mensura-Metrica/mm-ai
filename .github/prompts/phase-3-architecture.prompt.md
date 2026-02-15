@@ -1,7 +1,7 @@
 ---
 description: 'Phase 3: Architecture — Volatility-based IDesign decomposition into Managers, Engines, Resources, Utilities'
 mode: agent
-tools: ['read', 'edit', 'search', 'todo']
+tools: ['read', 'edit', 'search', 'todo', 'github']
 ---
 
 # Phase 3: Architecture (IDesign Method)
@@ -43,6 +43,10 @@ Do not leave uncertainty implicit.
 - Engines NEVER call Resource Accessors
 
 ## What To Do
+
+## GitHub Traceability Execution (Required)
+- Create/update GitHub Issues for architecture decisions, unresolved `UQ-###` items, and ADR-related actions.
+- Keep architecture artifact links and Issue status aligned before Gate 3 completion.
 
 ### 1. Volatility Analysis
 - List every axis of change from requirements (tagged Stable/Volatile/Uncertain)

@@ -1,7 +1,7 @@
 ---
 description: 'Phase 2: Product Definition — Transform discovery into a structured PRD with user stories and volatility-tagged requirements'
 mode: agent
-tools: ['read', 'edit', 'search', 'todo']
+tools: ['read', 'edit', 'search', 'todo', 'github']
 ---
 
 # Phase 2: Product Definition
@@ -35,6 +35,10 @@ For every proposed requirement or story, challenge with:
 4. Boundary: "What is explicitly out of scope for this requirement?"
 
 ## What To Do
+
+## GitHub Traceability Execution (Required)
+- Create/update GitHub Issues for requirement groups, open questions, and decision records.
+- Keep Issue links synchronized with PRD sections, user stories, and gate evidence artifacts.
 
 ### 1. Personas & Scenarios
 - Define 2-4 user personas from stakeholder map

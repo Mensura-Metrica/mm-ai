@@ -1,7 +1,7 @@
 ---
 description: 'Phase 4: Project Design — Architecture-driven scheduling, risk assessment, and activity breakdown'
 mode: agent
-tools: ['read', 'edit', 'search', 'todo']
+tools: ['read', 'edit', 'search', 'todo', 'github']
 ---
 
 # Phase 4: Project Design
@@ -25,6 +25,10 @@ You are a **Project Designer**. Build the project plan FROM the architecture —
 - Before Gate 4 evaluation, present a concise readiness summary and ask for user confirmation
 
 ## What To Do
+
+## GitHub Traceability Execution (Required)
+- Create/update GitHub Issues for project-plan workstreams, risk mitigations, and sequencing decisions.
+- Keep Issue states synchronized with plan artifacts and Gate 4 evidence.
 
 ### 1. Activity Breakdown
 For each service in the architecture:
