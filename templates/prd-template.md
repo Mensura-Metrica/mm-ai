@@ -6,6 +6,7 @@
 **Date**: [Date]  
 **Author**: [Author]  
 **Status**: [Draft / Review / Approved]  
+**Requirements Iteration Count**: [Number of completed refinement cycles]  
 
 ## 1. Introduction
 ### 1.1 Purpose
@@ -50,6 +51,19 @@
 
 ### UC-002: [Use Case Name]
 [Repeat structure]
+
+## 2A. Requirements Refinement Iteration Log (What)
+Document each refinement cycle used to clarify and stabilize system behavior.
+
+| Iteration | Date | Added Requirements | Changed Requirements | Removed Requirements | Key Decisions |
+|-----------|------|--------------------|----------------------|----------------------|---------------|
+| 1 | [Date] | [REQ IDs] | [REQ IDs] | [REQ IDs] | [Decision summary] |
+| 2 | [Date] | [REQ IDs] | [REQ IDs] | [REQ IDs] | [Decision summary] |
+
+**What Convergence Check (Gate 2 readiness):**
+- [ ] Requirement set is internally consistent (no unresolved conflicts)
+- [ ] Every Must requirement has clear testable acceptance criteria
+- [ ] Open questions are tracked with owner and due date
 
 ## 3. Functional Requirements
 
@@ -125,6 +139,11 @@
 |------------|-------------------------------|----------|-----------|
 | FR-001 | [Source] | UC-001 | TC-001 |
 | NFR-P001 | [Source] | — | TC-P001 |
+
+## 8.1 Open Requirement Questions
+| ID | Question | Related Requirement(s) | Owner | Target Decision Date | Status |
+|----|----------|------------------------|-------|----------------------|--------|
+| ORQ-001 | [Question] | [FR-XXX/NFR-XXX] | [Name/Role] | [Date] | [Open/Resolved/Deferred] |
 
 ## 9. Glossary
 [Domain-specific terms with precise definitions]

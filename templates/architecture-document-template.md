@@ -121,6 +121,18 @@ Operations:
 
 [Repeat for each significant decision]
 
+## 7.1 Architecture Uncertainty Log
+All architecture-relevant uncertainties must be tracked and closed before Gate 3 pass.
+
+| ID | Uncertainty | Why It Matters | Impact if Wrong | Status | Owner | Target Decision Date |
+|----|-------------|----------------|-----------------|--------|-------|----------------------|
+| UQ-001 | [Question/uncertainty] | [Boundary/interface/call-graph impact] | [What breaks or changes] | [Resolved/Deferred] | [Name/Role] | [Date] |
+
+Closure rules:
+- No unresolved **critical** uncertainties at Gate 3
+- Deferred items must include owner + target decision date
+- If a deferred item impacts service boundaries, interfaces, or call-graph rules, Gate 3 fails
+
 ## 8. Deployment Architecture
 [How services are deployed — containers, cloud services, network topology]
 

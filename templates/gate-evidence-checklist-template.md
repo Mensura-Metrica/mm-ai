@@ -34,6 +34,8 @@ Use this template at the end of each phase to prove gate readiness with objectiv
 
 | Signal | Target | Actual | Status | Notes |
 |--------|--------|--------|--------|-------|
+| Requirements discovery/refinement iteration cycles completed | [>=2 for Gate 1/2] | [#] | [Pass/Fail] | |
+| Critical unresolved requirement questions | [0 or approved exceptions] | [#] | [Pass/Fail] | |
 | Requirements traceability completeness | 100% | [%] | [Pass/Fail] | |
 | Open Critical defects | 0 | [#] | [Pass/Fail] | |
 | Open High defects | [Threshold] | [#] | [Pass/Fail] | |

@@ -99,8 +99,9 @@ Click **"Use this template"** on GitHub to start a new project. You get:
 
 1. **Volatility drives decomposition** — services encapsulate axes of change, not business functions
 2. **Architecture is not optional** — every system gets a proper volatility analysis
-3. **Quality is designed in, not tested in** — gates prevent phase transitions until criteria met
-4. **The LLM is a tool, not the architect** — human judgment validates all decisions
+3. **Requirements are iterative** — converge on clear Why/What through evidence-backed cycles before architecture
+4. **Quality is designed in, not tested in** — gates prevent phase transitions until criteria met
+5. **The LLM is a tool, not the architect** — human judgment validates all decisions
 
 ## Template Release Checklist
 

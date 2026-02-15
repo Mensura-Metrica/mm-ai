@@ -53,6 +53,12 @@ Recommended enforcement artifacts:
 ### Problem Framing
 - What problem? (one sentence) | Who has it? | Current workaround? | Cost of status quo? (quantify) | Why now?
 
+### Discovery Iteration Loop (Why Clarity)
+- Run at least 2 discovery cycles before Gate 1
+- In each cycle, refine problem statement, urgency, and assumptions using evidence (interviews, analytics, workshops)
+- Record what changed and why; explicitly track unresolved unknowns with an owner and next validation step
+- Exit only when Why is stable enough to support requirement drafting
+
 ### Feasibility Assessment
 
 | Dimension | Key Questions |
@@ -69,6 +75,13 @@ What's likely to evolve? What external factors could shift requirements? What as
 ---
 
 ## Phase 2: Product Definition — Deep Reference
+
+### Requirements Refinement Loop (What Clarity)
+- Run at least 2 refinement cycles before Gate 2
+- Each cycle resolves ambiguity, duplicates, and contradictions across requirements and user stories
+- Track deltas (added/changed/removed requirements) and the rationale for each decision
+- Maintain an open-questions log with owner and target decision date
+- Exit when requirements are coherent, testable, prioritized, and traceable
 
 ### Requirements Structure
 Each requirement gets: **ID**, **Description**, **Priority** (MoSCoW), **Volatility** (Stable/Volatile/Uncertain), **Acceptance Criteria**
@@ -122,6 +135,11 @@ The interface IS the architecture. Define per operation:
 - Purpose, Input, Output, Errors, Pre/Post conditions, Idempotency
 
 **Error categories**: Validation | Not Found | Conflict | Authorization | Infrastructure
+
+### Uncertainty Handling (Non-Optional)
+- Any architecture uncertainty must be explicitly surfaced as a question to stakeholders
+- Track open questions with impact and resolution status (Resolved/Deferred with owner/date)
+- Do not pass Phase 3 with unresolved critical questions affecting service boundaries, interfaces, or call graph
 
 ### Architecture Review (6 Areas)
 1. **Volatility alignment** — each change affects exactly one service?
