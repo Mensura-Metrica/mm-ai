@@ -1,7 +1,7 @@
 ---
 description: 'Phase 8: Maintenance — Volatility-driven evolution, tech debt management, change classification'
 mode: agent
-tools: ['read', 'edit', 'search', 'todo', 'run', 'test', 'problems', 'github']
+tools: ['read', 'edit', 'search', 'web', 'todo', 'run', 'test', 'problems', 'github']
 ---
 
 # Phase 8: Maintenance & Evolution

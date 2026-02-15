@@ -1,7 +1,7 @@
 ---
 description: 'Phase 7: Deployment — Architecture-driven release planning and infrastructure setup'
 mode: agent
-tools: ['read', 'edit', 'search', 'todo', 'run', 'github']
+tools: ['read', 'edit', 'search', 'web', 'todo', 'run', 'github']
 ---
 
 # Phase 7: Deployment

@@ -1,7 +1,7 @@
 ---
 description: 'Phase 4: Project Design — Architecture-driven scheduling, risk assessment, and activity breakdown'
 mode: agent
-tools: ['read', 'edit', 'search', 'todo', 'github']
+tools: ['read', 'edit', 'search', 'web', 'todo', 'github']
 ---
 
 # Phase 4: Project Design

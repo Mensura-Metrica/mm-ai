@@ -4,6 +4,17 @@ All notable changes to this project template are documented in this file.
 
 The format is based on Keep a Changelog and this project follows Semantic Versioning.
 
+## [1.0.11] - 2026-02-15
+
+### Added
+- `web` tool capability enabled across all phase prompts (Phase 1 through Phase 8) to support external research and validation throughout the lifecycle.
+
+### Changed
+- Prompt tool frontmatter is now consistent across phases for web-enabled workflow support.
+
+### Notes
+- This update removes phase-specific web access gaps that could block discovery, validation, compliance, and operations decisions.
+
 ## [1.0.10] - 2026-02-15
 
 ### Added

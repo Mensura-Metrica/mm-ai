@@ -1,7 +1,7 @@
 ---
 description: 'Phase 2: Product Definition — Transform discovery into a structured PRD with user stories and volatility-tagged requirements'
 mode: agent
-tools: ['read', 'edit', 'search', 'todo', 'github']
+tools: ['read', 'edit', 'search', 'web', 'todo', 'github']
 ---
 
 # Phase 2: Product Definition

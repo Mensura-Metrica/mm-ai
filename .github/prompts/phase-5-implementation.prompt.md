@@ -1,7 +1,7 @@
 ---
 description: 'Phase 5: Implementation — Contract-first development following IDesign build order'
 mode: agent
-tools: ['read', 'edit', 'search', 'todo', 'run', 'test', 'problems', 'github']
+tools: ['read', 'edit', 'search', 'web', 'todo', 'run', 'test', 'problems', 'github']
 ---
 
 # Phase 5: Implementation

@@ -1,7 +1,7 @@
 ---
 description: 'Phase 3: Architecture — Volatility-based IDesign decomposition into Managers, Engines, Resources, Utilities'
 mode: agent
-tools: ['read', 'edit', 'search', 'todo', 'github']
+tools: ['read', 'edit', 'search', 'web', 'todo', 'github']
 ---
 
 # Phase 3: Architecture (IDesign Method)
