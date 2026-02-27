@@ -30,6 +30,6 @@ These custom agents are designed for GitHub Copilot coding agent sessions and ma
 
 ## Rollout notes
 
-- These are repository-level agents for pilot validation.
-- After validation, copy the finalized files to your org `.github-private` repository under `agents/` for org-wide reuse.
-- Repository-level names override org-level names when they match.
+- These agents are now self-contained; they do not require local `.github/prompts` files to function.
+- For org-wide reuse, copy finalized files to your org `.github-private` repository under `agents/`.
+- Repository-level names override organization-level names when they match.
