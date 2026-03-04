@@ -1,0 +1,153 @@
+name: IaC Rehearsal Reusable
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: Target non-prod environment
+        required: true
+        type: string
+      perform_apply:
+        description: Execute apply after successful plan (non-prod only)
+        required: true
+        type: boolean
+      terraform_version:
+        description: Terraform version to install
+        required: false
+        default: "1.9.8"
+        type: string
+      terraform_dir:
+        description: Terraform root directory
+        required: false
+        default: "infra/terraform"
+        type: string
+      tfstate_key_prefix:
+        description: Prefix for remote state key path
+        required: false
+        default: "mm-signum"
+        type: string
+      artifact_name_prefix:
+        description: Prefix for uploaded rehearsal artifact
+        required: false
+        default: "iac-rehearsal"
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  rehearsal:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    env:
+      ARM_USE_OIDC: true
+      ARM_USE_AZUREAD: true
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    steps:
+      - name: Guardrail - rehearsal disabled by default
+        if: ${{ vars.IAC_REHEARSAL_ENABLED != 'true' }}
+        run: |
+          echo "IaC rehearsal is disabled. Set IAC_REHEARSAL_ENABLED=true after approvals."
+          exit 1
+
+      - name: Checkout
+        if: ${{ vars.IAC_REHEARSAL_ENABLED == 'true' }}
+        uses: actions/checkout@v4
+
+      - name: Preflight required vars and secrets
+        if: ${{ vars.IAC_REHEARSAL_ENABLED == 'true' }}
+        shell: bash
+        env:
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          TF_VAR_POSTGRES_ADMIN_PASSWORD: ${{ secrets.TF_VAR_POSTGRES_ADMIN_PASSWORD }}
+          TFSTATE_RESOURCE_GROUP: ${{ vars.TFSTATE_RESOURCE_GROUP }}
+          TFSTATE_STORAGE_ACCOUNT: ${{ vars.TFSTATE_STORAGE_ACCOUNT }}
+          TFSTATE_CONTAINER: ${{ vars.TFSTATE_CONTAINER }}
+        run: |
+          set -euo pipefail
+          required=(
+            AZURE_CLIENT_ID
+            AZURE_TENANT_ID
+            AZURE_SUBSCRIPTION_ID
+            TF_VAR_POSTGRES_ADMIN_PASSWORD
+            TFSTATE_RESOURCE_GROUP
+            TFSTATE_STORAGE_ACCOUNT
+            TFSTATE_CONTAINER
+          )
+
+          missing=0
+          for key in "${required[@]}"; do
+            if [ -z "${!key:-}" ]; then
+              echo "::error::Missing required workflow secret/variable: $key"
+              missing=1
+            fi
+          done
+
+          if [ "$missing" -ne 0 ]; then
+            echo "::error::Preflight validation failed. Configure required secrets/variables before running rehearsal."
+            exit 1
+          fi
+
+      - name: Setup Terraform
+        if: ${{ vars.IAC_REHEARSAL_ENABLED == 'true' }}
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ inputs.terraform_version }}
+
+      - name: Azure OIDC Login
+        if: ${{ vars.IAC_REHEARSAL_ENABLED == 'true' }}
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Terraform init (remote backend)
+        if: ${{ vars.IAC_REHEARSAL_ENABLED == 'true' }}
+        run: |
+          terraform -chdir=${{ inputs.terraform_dir }} init -input=false \
+            -backend-config="resource_group_name=${{ vars.TFSTATE_RESOURCE_GROUP }}" \
+            -backend-config="storage_account_name=${{ vars.TFSTATE_STORAGE_ACCOUNT }}" \
+            -backend-config="container_name=${{ vars.TFSTATE_CONTAINER }}" \
+            -backend-config="use_azuread_auth=true" \
+            -backend-config="key=${{ inputs.tfstate_key_prefix }}/${{ inputs.environment }}/platform.tfstate"
+
+      - name: Terraform validate
+        if: ${{ vars.IAC_REHEARSAL_ENABLED == 'true' }}
+        env:
+          TF_VAR_postgres_admin_password: ${{ secrets.TF_VAR_POSTGRES_ADMIN_PASSWORD }}
+        run: terraform -chdir=${{ inputs.terraform_dir }} validate
+
+      - name: Terraform plan
+        if: ${{ vars.IAC_REHEARSAL_ENABLED == 'true' }}
+        env:
+          TF_VAR_postgres_admin_password: ${{ secrets.TF_VAR_POSTGRES_ADMIN_PASSWORD }}
+        run: |
+          terraform -chdir=${{ inputs.terraform_dir }} plan -input=false \
+            -var-file="env/${{ inputs.environment }}/terraform.tfvars" \
+            -out="tfplan"
+
+      - name: Export plan JSON
+        if: ${{ vars.IAC_REHEARSAL_ENABLED == 'true' }}
+        run: terraform -chdir=${{ inputs.terraform_dir }} show -json tfplan > ${{ inputs.terraform_dir }}/tfplan-${{ inputs.environment }}.json
+
+      - name: Terraform apply (controlled rehearsal)
+        if: ${{ vars.IAC_REHEARSAL_ENABLED == 'true' && inputs.perform_apply == true && vars.IAC_APPLY_ENABLED == 'true' }}
+        env:
+          TF_VAR_postgres_admin_password: ${{ secrets.TF_VAR_POSTGRES_ADMIN_PASSWORD }}
+        run: terraform -chdir=${{ inputs.terraform_dir }} apply -input=false -auto-approve tfplan
+
+      - name: Upload rehearsal evidence
+        if: ${{ vars.IAC_REHEARSAL_ENABLED == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name_prefix }}-${{ inputs.environment }}
+          path: |
+            ${{ inputs.terraform_dir }}/tfplan-${{ inputs.environment }}.json
+          retention-days: 30
