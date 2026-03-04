@@ -96,7 +96,7 @@ jobs:
 
       - name: TFLint lint
         if: steps.detect.outputs.has_tf == 'true'
-        run: tflint --chdir=${{ inputs.terraform_dir }} --config=${{ inputs.tflint_config_path }} --recursive --minimum-failure-severity=warning
+        run: tflint --chdir=${{ inputs.terraform_dir }} --config=${{ github.workspace }}/${{ inputs.tflint_config_path }} --recursive --minimum-failure-severity=warning
 
       - name: Checkov policy scan
         if: steps.detect.outputs.has_tf == 'true'
