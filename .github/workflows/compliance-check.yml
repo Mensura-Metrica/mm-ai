@@ -1,6 +1,28 @@
 name: Compliance Check
 
 on:
+  workflow_call:
+    inputs:
+      report_path:
+        description: Path to generated compliance report JSON
+        required: false
+        default: ./.mm-ai/out/compliance-report.json
+        type: string
+      config_path:
+        description: Path to compliance config JSON
+        required: false
+        default: ./.mm-ai/compliance-check-config.json
+        type: string
+      evaluator_script_path:
+        description: Path to evaluate-compliance PowerShell script
+        required: false
+        default: ./scripts/evaluate-compliance.ps1
+        type: string
+      config_template_path:
+        description: Fallback compliance config template path
+        required: false
+        default: ./templates/compliance-check-config.template.json
+        type: string
   pull_request:
     branches: [ main ]
   workflow_dispatch:
@@ -16,27 +38,27 @@ jobs:
       - name: Validate compliance artifact paths
         shell: pwsh
         run: |
-          if (-not (Test-Path -LiteralPath './scripts/evaluate-compliance.ps1')) {
-            throw 'Missing evaluator script at ./scripts/evaluate-compliance.ps1'
+          if (-not (Test-Path -LiteralPath '${{ inputs.evaluator_script_path }}')) {
+            throw "Missing evaluator script at ${{ inputs.evaluator_script_path }}"
           }
 
-          if (-not (Test-Path -LiteralPath './.mm-ai/compliance-check-config.json')) {
-            if (-not (Test-Path -LiteralPath './templates/compliance-check-config.template.json')) {
-              throw 'Missing compliance config and template. Expected ./.mm-ai/compliance-check-config.json or ./templates/compliance-check-config.template.json.'
+          if (-not (Test-Path -LiteralPath '${{ inputs.config_path }}')) {
+            if (-not (Test-Path -LiteralPath '${{ inputs.config_template_path }}')) {
+              throw "Missing compliance config and template. Expected ${{ inputs.config_path }} or ${{ inputs.config_template_path }}."
             }
 
             New-Item -ItemType Directory -Path './.mm-ai' -Force | Out-Null
-            Copy-Item -LiteralPath './templates/compliance-check-config.template.json' -Destination './.mm-ai/compliance-check-config.json'
-            Write-Host 'Bootstrapped ./.mm-ai/compliance-check-config.json from template.'
+            Copy-Item -LiteralPath '${{ inputs.config_template_path }}' -Destination '${{ inputs.config_path }}'
+            Write-Host "Bootstrapped ${{ inputs.config_path }} from template."
           }
 
-          if (-not (Test-Path -LiteralPath './.mm-ai/out/compliance-report.json')) {
-            throw 'Missing compliance report at ./.mm-ai/out/compliance-report.json. Generate this report in CI before evaluation.'
+          if (-not (Test-Path -LiteralPath '${{ inputs.report_path }}')) {
+            throw "Missing compliance report at ${{ inputs.report_path }}. Generate this report in CI before evaluation."
           }
 
       - name: Evaluate compliance policy
         shell: pwsh
         run: |
-          ./scripts/evaluate-compliance.ps1 `
-            -ReportPath ./.mm-ai/out/compliance-report.json `
-            -ConfigPath ./.mm-ai/compliance-check-config.json
+          ${{ inputs.evaluator_script_path }} `
+            -ReportPath '${{ inputs.report_path }}' `
+            -ConfigPath '${{ inputs.config_path }}'
