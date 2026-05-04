@@ -63,10 +63,10 @@ If decision is No-Go or Defer, provide:
 
 ## PM Artefacts Produced
 
-Produce artefacts in `docs/` and use templates from `product/evidence/sponsor/`:
+Produce artefacts in `docs/` and use templates from `petra/artefacts/templates/`:
 
 | Artefact | Persona | Template |
 |----------|---------|----------|
-| Project Brief | Sponsor | `product/evidence/sponsor/project-brief.md` |
+| Project Brief | Sponsor | `petra/artefacts/templates/project-brief.md` |
 
-Reference in status report using `product/evidence/status-report.md`
+Reference in status report using `petra/evidence/status-report.md`

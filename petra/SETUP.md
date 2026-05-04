@@ -67,6 +67,70 @@ After each phase:
 - **Solo**: Play all personas yourself
 - **Team**: Assign personas to team members
 
+## Team Workflow
+
+### Role Assignment
+
+| Phase | Lead | Participants |
+|-------|------|--------------|
+| 0-1 | Sponsor | PM, Architect |
+| 2 | PM | Sponsor, Architect |
+| 3 | Architect | Developer, PM |
+| 4 | PM | Sponsor, Architect |
+| 5 | Lead Developer | Architect, QA |
+| 6 | QA | Lead Developer |
+| 7 | DevOps / Architect | Lead Developer |
+| 8 | PM | Sponsor, Developer |
+
+### Team Rituals
+
+- **Weekly sync**: Phase status + blocker review (15 min)
+- **Phase handoff**: Artifacts reviewed, sign-off recorded
+- **Gate review**: Automated pass + manual checklist (async or scheduled)
+- **Retrospective**: Post-phase lessons captured in `docs/retrospectives/`
+
+### Scaling Options
+
+| Team Size | Approach |
+|-----------|----------|
+| 2-5 | All roles assigned, daily sync |
+| 5-10 | Phase leads + dedicated PM/Architect |
+| 10+ | Feature teams with phase guardians |
+
+**Phase guardian**: One person ensures phase artifacts meet gate criteria before advancing. Rotates each phase.
+
+## Fast Track (Solo/Small Projects)
+
+For projects under 2 weeks or solo builders, skip the heavy process:
+
+| Skip | Use Instead |
+|------|-------------|
+| Phase 0-1 Socratic loops | 1-paragraph problem statement |
+| Phase 2 detailed PRD | Requirements in issue tracker |
+| Phase 3 full architecture doc | 1-page architecture notes |
+| Phase 4 detailed project plan | Sprint board with tasks |
+| Full gate checklists | CI pass = gate pass |
+
+**Minimal path**: Intake → Architecture → Build → Deploy
+
+## Gate Automation
+
+Manual gate checklists don't scale. Automate where possible:
+
+| Gate Item | Automation |
+|-----------|------------|
+| Tests pass | CI pipeline |
+| Code lint/format | Pre-commit hooks |
+| Coverage >80% | Coverage report in CI |
+| No layer violations | Architecture lint rule |
+| No lateral calls | Static analysis |
+| PR reviewed | GitHub/GitLab protected branch |
+
+**Gate = CI pass** for automated items. Manual review only for:
+- Architectural decisions
+- Trade-off documentation
+- Stakeholder sign-offs
+
 ## Troubleshooting
 
 | Issue | Solution |

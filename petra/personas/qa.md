@@ -29,12 +29,10 @@ You CONSUME:
 
 ## Your Templates
 
-Located in `product/evidence/qa/`:
-- `test-results.md` — Test execution results
-- `defect-report.md` — Defect tracking
-- `qa-signoff.md` — QA gate sign-off
-
-See full template list in [`product/evidence/qa/README.md`](../../product/evidence/qa/README.md)
+Located in `petra/artefacts/templates/`:
+- `test-results.md`
+- `defect-report.md`
+- `qa-signoff.md`
 
 ## Quality Gate Role
 
@@ -74,10 +72,10 @@ You are responsible for **Gate 6** (QA Gate). Before signing off:
 
 | Question | Answer Here |
 |----------|-----------|
-| What tests exist? | docs/test-plan.md |
-| What's failing? | docs/test-results.md |
-| What's open? | docs/defects.md |
-| What's the strategy? | docs/test-plan.md |
+| What tests exist? | See `petra/artefacts/templates/test-results.md` |
+| What's failing? | Test results template |
+| What's open? | `petra/artefacts/templates/defect-report.md` |
+| What's the strategy? | Phase 6 QA workflow |
 
 ## Phase Iteration Guidance
 

@@ -103,29 +103,33 @@ For each service, in build order:
 - Enforce selected coding standards through review and automation where possible
 
 ## Gate 5 Checklist
-Before moving to Phase 6, ALL must pass:
-- [ ] DoR satisfied before implementation starts
-- [ ] TDD cycle followed (Red -> Green -> Refactor) for implemented behaviors
-- [ ] Commits are atomic and pushed incrementally
-- [ ] Every implemented change is linked to a valid tracker item
-- [ ] Git commit/push executed for completed change sets (unless user requested local-only)
-- [ ] PR created/updated with Issue references when remote access is available
-- [ ] All interfaces implemented
-- [ ] Build order followed (bottom-up)
-- [ ] Unit tests per service (>80% logic coverage)
-- [ ] No lateral calls in code
-- [ ] No layer skipping in code
-- [ ] Error handling matches error taxonomy
-- [ ] Integration tests at service boundaries
-- [ ] Code review completed
-- [ ] No unresolved TODOs in critical paths
-- [ ] Architecture deviations documented and justified
-- [ ] SOLID principles upheld or deviations explicitly justified
-- [ ] Tracker items updated with evidence and final disposition
-- [ ] Coding standards compliance verified (if standards are in scope for the project)
-- [ ] Mandatory adopted standards have evidence links in gate artifacts
-- [ ] (Strict mode) Step outputs comply with handoff contract and allowed file scope
-- [ ] (Strict mode) No out-of-manifest file changes without architect approval
+
+### Automated (CI validates — reference evidence in status report)
+
+| Item | Evidence |
+|------|----------|
+| Tests pass | CI pipeline status |
+| Coverage >80% | Coverage report |
+| No lateral calls | Architecture lint rule |
+| No layer skipping | Architecture lint rule |
+| Lint/format pass | Pre-commit / CI output |
+| Error handling valid | Static analysis |
+| No critical TODOs | Lint rule |
+
+### Manual (requires human review)
+
+| Item | Who Reviews |
+|------|-------------|
+| DoR satisfied before start | Lead developer |
+| Tracker item linked | Lead developer |
+| Build order followed | Architect |
+| Architecture deviations documented | Architect |
+| SOLIDs upheld / justified | Lead developer |
+| Tracker items updated | PM |
+| Standards compliance | Tech lead |
+| Code review completed | Peer reviewer |
+
+**Gate = CI pass + all manual items checked.**
 
 When all items pass: **"Gate 5 passed. Ready for Phase 6: Quality Assurance."**
 
@@ -136,8 +140,8 @@ If checklist items fail, do not advance. Return:
 
 ## PM Artefacts Produced
 
-Use templates from `product/evidence/`:
+Use templates from `petra/evidence/`:
 
 | Artefact | Persona | Template |
 |----------|---------|----------|
-| Status Report | PM | `product/evidence/status-report.md` |
+| Status Report | PM | `petra/evidence/status-report.md` |

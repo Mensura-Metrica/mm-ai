@@ -29,12 +29,10 @@ You CONSUME:
 
 ## Your Templates
 
-Located in `product/evidence/developer/`:
+Located in `petra/artefacts/templates/`:
 - `sprint-task.md` — Task execution template
 - `definition-of-done.md` — DoD checklist
 - `code-review-checklist.md` — Review template
-
-See full template list in [`product/evidence/developer/README.md`](../../product/evidence/developer/README.md)
 
 ## Quality Gate Role
 
@@ -95,9 +93,9 @@ For each task:
 
 ## Tools & Standards
 
-- Code style: See `docs/adopted-standards.md`
+- Code style: Create `docs/adopted-standards.md` for your project
 - Commits: `<type>(<scope>): <description>`
-- Branching: See execution control protocol
+- Branching: See Phase 5 execution controls
 
 ## Next Steps
 

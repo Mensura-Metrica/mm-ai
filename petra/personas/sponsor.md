@@ -31,14 +31,10 @@ You CONSUME:
 
 ## Your Templates
 
-Located in `product/evidence/sponsor/`:
-- `discovery-sponsor-view.md` — Phase 1 summary for investment decision
-- `budget-approval.md` — Budget sign-off template
-- `release-approval.md` — Production go/no-go
-- `project-brief.md` — Project charter
-- `release.md` — Release checklist
-
-See full template list in [`product/evidence/sponsor/README.md`](../../product/evidence/sponsor/README.md)
+Located in `petra/artefacts/templates/`:
+- `project-brief.md`
+- `budget-approval.md`
+- `release-approval.md`
 
 ## Quality Gate Role
 
@@ -85,4 +81,4 @@ Your PM should filter noise and present clear decisions.
 
 ## Next Steps
 
-Your primary interface is your PM. Work with them for day-to-day updates. For methodology context, see `.github/prompts/`.
+Your primary interface is your PM. Work with them for day-to-day updates. For methodology context, see `petra/phases/`.

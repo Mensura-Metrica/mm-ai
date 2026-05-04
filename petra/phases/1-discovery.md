@@ -34,11 +34,11 @@ For each major claim, always ask:
 
 ## PM Artefacts Produced
 
-Use templates from `product/evidence/sponsor/`:
+Use templates from `petra/artefacts/templates/`:
 
 | Artefact | Persona | Template |
 |----------|---------|----------|
-| Project Brief | Sponsor | `product/evidence/sponsor/project-brief.md` |
+| Project Brief | Sponsor | `petra/artefacts/templates/project-brief.md` |
 
 Work through these steps with the user. Don't rush — dig deep on each before moving on.
 

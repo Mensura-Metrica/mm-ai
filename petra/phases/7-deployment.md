@@ -90,8 +90,8 @@ If checklist items fail, do not advance. Return:
 
 ## PM Artefacts Produced
 
-Use templates from `product/evidence/sponsor/`:
+Use templates from `petra/artefacts/templates/`:
 
 | Artefact | Persona | Template |
 |----------|---------|----------|
-| Release | Sponsor | `product/evidence/sponsor/release.md` |
+| Release | Sponsor | `petra/artefacts/templates/release.md` |

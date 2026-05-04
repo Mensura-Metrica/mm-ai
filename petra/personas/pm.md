@@ -34,11 +34,9 @@ You CONSUME:
 
 ## Your Templates
 
-Located in `product/evidence/pm/`:
-- `project-plan.md` — Full project plan
-- `sprint-plan.md` — Sprint template
-
-See full template list in [`product/evidence/pm/README.md`](../../product/evidence/pm/README.md)
+Located in `petra/artefacts/templates/`:
+- `sprint-plan.md`
+- `sprint-task.md`
 
 ## Quality Gate Role
 
@@ -98,4 +96,4 @@ Your value is keeping things moving smoothly.
 
 ## Next Steps
 
-Navigate to your current phase in `.github/prompts/` and ensureartefacts are being tracked.
+Navigate to your current phase in `petra/phases/` and ensure artefacts are being tracked.

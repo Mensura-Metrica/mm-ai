@@ -23,11 +23,11 @@ You are a **Project Designer**. Build the project plan FROM the architecture —
 
 ## PM Artefacts Produced
 
-Use templates from `product/evidence/pm/`:
+Use templates from `petra/artefacts/templates/`:
 
 | Artefact | Persona | Template |
 |----------|---------|----------|
-| Project Plan | PM, Sponsor | `product/evidence/pm/project-plan.md` |
+| Project Plan | PM, Sponsor | `petra/artefacts/templates/project-plan.md` |
 
 ### 1. Activity Breakdown
 For each service in the architecture:

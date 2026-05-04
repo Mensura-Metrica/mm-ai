@@ -41,11 +41,11 @@ Do not leave uncertainty implicit.
 
 ## PM Artefacts Produced
 
-Use templates from `product/evidence/architect/`:
+Use templates from `petra/artefacts/templates/`:
 
 | Artefact | Persona | Template |
 |----------|---------|----------|
-| Architecture | Architect | `product/evidence/architect/architecture-document.md` |
+| Architecture | Architect | `petra/artefacts/templates/architecture-document.md` |
 
 ### 1. Volatility Analysis
 - List every axis of change from requirements (tagged Stable/Volatile/Uncertain)
@@ -93,26 +93,35 @@ Diagram quality expectations:
 - If critical deferred items exist, Gate 3 fails
 
 ## Gate 3 Checklist
-Before moving to Phase 4, ALL must pass:
-- [ ] All volatility axes identified and ranked
-- [ ] Each service maps to exactly one volatility axis
-- [ ] Service taxonomy correct (every service is M/E/RA/U/C)
-- [ ] Call graph follows taxonomy rules — no violations
-- [ ] No lateral calls between same-type services
-- [ ] No layer skipping
-- [ ] Interfaces defined with method signatures
-- [ ] Error taxonomy per service
-- [ ] Every requirement traceable to a service
-- [ ] No service without a volatility justification
-- [ ] C1 System Context diagram produced and reviewed
-- [ ] C2 Container diagram produced and reviewed
-- [ ] C3 Component diagrams produced for key containers
-- [ ] C4 Code diagrams produced for high-risk components (or explicit rationale for omission)
-- [ ] All architecture uncertainties logged and statused (Resolved or Deferred with owner/date)
-- [ ] No unresolved critical architecture questions
-- [ ] Standards alignment documented (if standards are in scope for the project)
-- [ ] Adopted standards checklist completed for project (mandatory vs advisory rules)
-- [ ] Architecture document produced
+
+### Automated (static analysis / tooling)
+
+| Item | Evidence |
+|------|----------|
+| Call graph follows taxonomy rules | Architecture lint rule |
+| No lateral calls | Architecture lint rule |
+| No layer skipping | Architecture lint rule |
+
+### Manual (requires human review)
+
+| Item | Who Reviews |
+|------|-------------|
+| Volatility axes identified & ranked | Architect |
+| Each service maps to one volatility axis | Architect |
+| Service taxonomy correct (M/E/RA/U/C) | Architect |
+| Interfaces defined with signatures | Architect |
+| Error taxonomy per service | Architect |
+| Every requirement traceable | Architect |
+| C1 System Context diagram | Architect + Sponsor |
+| C2 Container diagram | Architect |
+| C3 Component diagrams | Architect |
+| C4 Code diagrams (or rationale) | Architect |
+| UQ-### items statused | Architect |
+| No unresolved critical questions | Architect |
+| Standards alignment documented | Tech lead |
+| Architecture document produced | Architect + Sponsor |
+
+**Gate = architecture lint pass + all manual items checked.**
 
 When all items pass: **"Gate 3 passed. Ready for Phase 4: Project Design."**
 

@@ -64,8 +64,8 @@ Track and prioritize:
 
 ## PM Artefacts Produced
 
-Use templates from `product/evidence/`:
+Use templates from `petra/evidence/`:
 
 | Artefact | Persona | Template |
 |----------|---------|----------|
-| Status Report | PM | `product/evidence/status-report.md` |
+| Status Report | PM | `petra/evidence/status-report.md` |

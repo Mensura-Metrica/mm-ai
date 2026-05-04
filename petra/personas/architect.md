@@ -34,12 +34,10 @@ You CONSUME:
 
 ## Your Templates
 
-Located in `product/evidence/architect/`:
-- `architecture-document.md` — Main architecture output
-- `adr-template.md` — Architecture Decision Records
-- `interface-contract-template.md` — Interface definitions
-
-See full template list in [`product/evidence/architect/README.md`](../../product/evidence/architect/README.md)
+Located in `petra/artefacts/templates/`:
+- `architecture-document.md`
+- `adr-template.md`
+- `interface-contract-template.md`
 
 ## Quality Gate Role
 
@@ -59,12 +57,14 @@ You are responsible for **Gate 3** (Architecture Gate) specifically. Before sign
 
 ## Quick Reference
 
+> These are produced in Phase 3. Create them in your project `docs/architecture/` during architecture phase.
+
 | Question | Answer Here |
 |----------|-----------|
-| Where is the architecture? | `docs/architecture/` |
-| What services exist? | `docs/architecture/services.md` |
-| What are the interfaces? | `docs/architecture/interfaces/` |
-| What are the ADRs? | `docs/architecture/ADRs/` |
+| Where is the architecture? | `docs/architecture/` (create during Phase 3) |
+| What services exist? | Architecture document from Phase 3 |
+| What are the interfaces? | Interface contracts from Phase 3 |
+| What are the ADRs? | `docs/architecture/ADRs/` (create during Phase 3) |
 
 ## Phase Iteration Guidance
 
@@ -82,4 +82,4 @@ Do NOT sign off on architecture that:
 
 ## Next Steps
 
-Navigate to your current phase in `.github/prompts/` and begin at the iteration that matches your progress.
+Navigate to your current phase in `petra/phases/` and follow the phase workflow.

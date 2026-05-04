@@ -105,8 +105,8 @@ If checklist items fail, do not advance. Return:
 
 ## PM Artefacts Produced
 
-Use templates from `product/evidence/qa/`:
+Use templates from `petra/artefacts/templates/`:
 
 | Artefact | Persona | Template |
 |----------|---------|----------|
-| Test Results | QA | `product/evidence/qa/test-results.md` |
+| Test Results | QA | `petra/artefacts/templates/test-results.md` |

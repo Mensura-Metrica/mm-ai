@@ -33,11 +33,11 @@ For every proposed requirement or story, challenge with:
 
 ## PM Artefacts Produced
 
-Use templates from `product/evidence/sponsor/`:
+Use templates from `petra/artefacts/templates/`:
 
 | Artefact | Persona | Template |
 |----------|---------|----------|
-| Project Brief | Sponsor | `product/evidence/sponsor/project-brief.md` |
+| Project Brief | Sponsor | `petra/artefacts/templates/project-brief.md` |
 
 ### 1. Personas & Scenarios
 - Define 2-4 user personas from stakeholder map
