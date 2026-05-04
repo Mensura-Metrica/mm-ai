@@ -26,17 +26,15 @@ Copy the relevant persona prompt to your LLM context:
 
 ## Step 3: IDE Integration
 
-### Cursor
+Copy `petra/ide/ai-rules.md` to your IDE's rules file:
 
-Copy contents of `petra/ide/cursor-rules.md` to your project's `.cursorrules` file.
-
-### VS Code / Copilot
-
-Add contents of `petra/ide/copilot-instructions.md` to `.github/copilot-instructions.md` or VS Code settings.
-
-### JetBrains
-
-Configure in Settings → Tools → AI Assistant or similar.
+| IDE | Filename |
+|-----|----------|
+| Cursor | `.cursorrules` |
+| Windsurf | `.windsurfrules` |
+| Claude Code | `CLAUDE.md` |
+| Copilot | `.github/copilot-instructions.md` |
+| Other | Add to AI assistant instructions |
 
 ## Step 4: PM Tool Integration
 
