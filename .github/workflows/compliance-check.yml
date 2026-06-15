@@ -1,0 +1,64 @@
+name: Compliance Check
+
+on:
+  workflow_call:
+    inputs:
+      report_path:
+        description: Path to generated compliance report JSON
+        required: false
+        default: ./.mm-ai/out/compliance-report.json
+        type: string
+      config_path:
+        description: Path to compliance config JSON
+        required: false
+        default: ./.mm-ai/compliance-check-config.json
+        type: string
+      evaluator_script_path:
+        description: Path to evaluate-compliance PowerShell script
+        required: false
+        default: ./scripts/evaluate-compliance.ps1
+        type: string
+      config_template_path:
+        description: Fallback compliance config template path
+        required: false
+        default: ./templates/compliance-check-config.template.json
+        type: string
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  compliance:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Validate compliance artifact paths
+        shell: pwsh
+        run: |
+          if (-not (Test-Path -LiteralPath '${{ inputs.evaluator_script_path }}')) {
+            throw "Missing evaluator script at ${{ inputs.evaluator_script_path }}"
+          }
+
+          if (-not (Test-Path -LiteralPath '${{ inputs.config_path }}')) {
+            if (-not (Test-Path -LiteralPath '${{ inputs.config_template_path }}')) {
+              throw "Missing compliance config and template. Expected ${{ inputs.config_path }} or ${{ inputs.config_template_path }}."
+            }
+
+            New-Item -ItemType Directory -Path './.mm-ai' -Force | Out-Null
+            Copy-Item -LiteralPath '${{ inputs.config_template_path }}' -Destination '${{ inputs.config_path }}'
+            Write-Host "Bootstrapped ${{ inputs.config_path }} from template."
+          }
+
+          if (-not (Test-Path -LiteralPath '${{ inputs.report_path }}')) {
+            throw "Missing compliance report at ${{ inputs.report_path }}. Generate this report in CI before evaluation."
+          }
+
+      - name: Evaluate compliance policy
+        shell: pwsh
+        run: |
+          ${{ inputs.evaluator_script_path }} `
+            -ReportPath '${{ inputs.report_path }}' `
+            -ConfigPath '${{ inputs.config_path }}'

@@ -1,0 +1,81 @@
+name: Migration Safety Reusable
+
+on:
+  workflow_call:
+    inputs:
+      migrations_dir:
+        description: Path to SQL migrations directory
+        required: false
+        default: "src/MM.Signum.ResourceAccessors/Persistence/Migrations"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  migration-safety:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Validate migration up/down pairs
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          migrations_dir="${{ inputs.migrations_dir }}"
+          if [ ! -d "$migrations_dir" ]; then
+            echo "::error::Migrations directory not found: $migrations_dir"
+            exit 1
+          fi
+
+          failure_count=0
+
+          while IFS= read -r up_file; do
+            base_path="${up_file%.up.sql}"
+            down_file="${base_path}.down.sql"
+            if [ ! -f "$down_file" ]; then
+              echo "::error file=$up_file::Missing matching down migration: $(basename "$down_file")"
+              failure_count=$((failure_count + 1))
+            fi
+          done < <(find "$migrations_dir" -maxdepth 1 -type f -name "*.up.sql" | sort)
+
+          while IFS= read -r down_file; do
+            base_path="${down_file%.down.sql}"
+            up_file="${base_path}.up.sql"
+            if [ ! -f "$up_file" ]; then
+              echo "::error file=$down_file::Missing matching up migration: $(basename "$up_file")"
+              failure_count=$((failure_count + 1))
+            fi
+          done < <(find "$migrations_dir" -maxdepth 1 -type f -name "*.down.sql" | sort)
+
+          if [ "$failure_count" -ne 0 ]; then
+            echo "::error::Migration pair validation failed with $failure_count issue(s)."
+            exit 1
+          fi
+
+      - name: Validate migration naming convention
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          migrations_dir="${{ inputs.migrations_dir }}"
+          invalid_count=0
+
+          while IFS= read -r migration_file; do
+            filename="$(basename "$migration_file")"
+            stem="${filename%.up.sql}"
+            stem="${stem%.down.sql}"
+
+            if [[ ! "$stem" =~ ^[0-9]{8}_[a-z0-9_]+$ ]]; then
+              echo "::error file=$migration_file::Invalid migration name '$filename'. Expected '<yyyymmdd>_<description>.up.sql|down.sql'."
+              invalid_count=$((invalid_count + 1))
+            fi
+          done < <(find "$migrations_dir" -maxdepth 1 -type f \( -name "*.up.sql" -o -name "*.down.sql" \) | sort)
+
+          if [ "$invalid_count" -ne 0 ]; then
+            echo "::error::Migration naming validation failed with $invalid_count issue(s)."
+            exit 1
+          fi

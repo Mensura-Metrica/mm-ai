@@ -1,0 +1,120 @@
+name: Dotnet CI Reusable
+
+on:
+  workflow_call:
+    inputs:
+      dotnet_version:
+        description: .NET SDK version spec
+        required: false
+        default: "10.0.x"
+        type: string
+      min_line_coverage:
+        description: Minimum merged line coverage percentage
+        required: false
+        default: "70"
+        type: string
+      postgres_image:
+        description: Postgres service image
+        required: false
+        default: "postgres:16-alpine"
+        type: string
+      postgres_user:
+        description: Postgres username
+        required: false
+        default: "signum"
+        type: string
+      postgres_password:
+        description: Postgres password
+        required: false
+        default: "signum_ci"
+        type: string
+      postgres_db:
+        description: Postgres database
+        required: false
+        default: "signum_test"
+        type: string
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: ${{ inputs.postgres_image }}
+        env:
+          POSTGRES_USER: ${{ inputs.postgres_user }}
+          POSTGRES_PASSWORD: ${{ inputs.postgres_password }}
+          POSTGRES_DB: ${{ inputs.postgres_db }}
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U ${{ inputs.postgres_user }}"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: ${{ inputs.dotnet_version }}
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build -c Release --no-restore --warnaserror
+
+      - name: Test with coverage
+        run: |
+          dotnet test -c Release --no-build \
+            --verbosity normal \
+            --results-directory ./test-results \
+            --collect:"XPlat Code Coverage" \
+            --logger "trx"
+        env:
+          ConnectionStrings__Default: "Host=localhost;Port=5432;Database=${{ inputs.postgres_db }};Username=${{ inputs.postgres_user }};Password=${{ inputs.postgres_password }}"
+
+      - name: Enforce minimum line coverage
+        shell: pwsh
+        run: |
+          $minimum = [double]::Parse("${{ inputs.min_line_coverage }}", [System.Globalization.CultureInfo]::InvariantCulture)
+          dotnet tool update -g dotnet-reportgenerator-globaltool | Out-Null
+          $env:PATH = "$env:USERPROFILE/.dotnet/tools;$env:PATH"
+
+          reportgenerator "-reports:./test-results/**/coverage.cobertura.xml" "-targetdir:./test-results/coverage-report" "-reporttypes:TextSummary" | Out-Null
+
+          $summaryPath = "./test-results/coverage-report/Summary.txt"
+          if (-not (Test-Path -Path $summaryPath)) {
+            Write-Error "Coverage summary was not generated at $summaryPath"
+            exit 1
+          }
+
+          $lineCoverageLine = Select-String -Path $summaryPath -Pattern "^\s*Line coverage:\s*([0-9]+(?:\.[0-9]+)?)%" | Select-Object -First 1
+          if (-not $lineCoverageLine) {
+            Write-Error "Unable to parse line coverage from $summaryPath"
+            exit 1
+          }
+
+          $lineCoverage = [double]::Parse($lineCoverageLine.Matches[0].Groups[1].Value, [System.Globalization.CultureInfo]::InvariantCulture)
+          Write-Output "Combined line coverage (merged): $lineCoverage% (minimum: $minimum%)"
+
+          if ($lineCoverage -lt $minimum) {
+            Write-Error "Combined line coverage $lineCoverage% is below required minimum $minimum%."
+            exit 1
+          }
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: test-results
+          path: ./test-results
+
+      - name: Upload coverage
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: coverage
+          path: ./test-results/**/coverage.cobertura.xml

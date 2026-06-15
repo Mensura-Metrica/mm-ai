@@ -1,0 +1,130 @@
+name: IaC Plan Reusable
+
+on:
+  workflow_call:
+    inputs:
+      terraform_version:
+        description: Terraform version to install
+        required: false
+        default: "1.9.8"
+        type: string
+      terraform_dir:
+        description: Terraform root directory
+        required: false
+        default: "infra/terraform"
+        type: string
+      tflint_config_path:
+        description: TFLint config path
+        required: false
+        default: "infra/terraform/.tflint.hcl"
+        type: string
+      checkov_config_path:
+        description: Checkov config path
+        required: false
+        default: "infra/terraform/checkov.yaml"
+        type: string
+      checkov_version:
+        description: Checkov package version
+        required: false
+        default: "3.2.385"
+        type: string
+      checkov_soft_fail:
+        description: Whether Checkov findings should be non-blocking
+        required: false
+        default: true
+        type: boolean
+      artifact_name:
+        description: Artifact name for policy scan output
+        required: false
+        default: "iac-policy-scan-evidence"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ inputs.terraform_version }}
+
+      - name: Detect Terraform files
+        id: detect
+        shell: bash
+        run: |
+          if find "${{ inputs.terraform_dir }}" -type f -name "*.tf" 2>/dev/null | grep -q .; then
+            echo "has_tf=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_tf=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup TFLint
+        if: steps.detect.outputs.has_tf == 'true'
+        uses: terraform-linters/setup-tflint@v4
+
+      - name: Setup Python
+        if: steps.detect.outputs.has_tf == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: No Terraform sources yet
+        if: steps.detect.outputs.has_tf == 'false'
+        run: echo "No Terraform files found under ${{ inputs.terraform_dir }}. Validation skipped."
+
+      - name: Terraform format check
+        if: steps.detect.outputs.has_tf == 'true'
+        run: terraform -chdir=${{ inputs.terraform_dir }} fmt -check -recursive
+
+      - name: Terraform init (backend disabled)
+        if: steps.detect.outputs.has_tf == 'true'
+        run: terraform -chdir=${{ inputs.terraform_dir }} init -backend=false -input=false
+
+      - name: Terraform validate
+        if: steps.detect.outputs.has_tf == 'true'
+        run: terraform -chdir=${{ inputs.terraform_dir }} validate
+
+      - name: Install Checkov
+        if: steps.detect.outputs.has_tf == 'true'
+        run: pip install checkov==${{ inputs.checkov_version }}
+
+      - name: TFLint init
+        if: steps.detect.outputs.has_tf == 'true'
+        run: tflint --chdir=${{ inputs.terraform_dir }} --config=${{ github.workspace }}/${{ inputs.tflint_config_path }} --init
+
+      - name: TFLint lint
+        if: steps.detect.outputs.has_tf == 'true'
+        run: tflint --chdir=${{ inputs.terraform_dir }} --config=${{ github.workspace }}/${{ inputs.tflint_config_path }} --recursive --minimum-failure-severity=warning
+
+      - name: Checkov policy scan
+        if: steps.detect.outputs.has_tf == 'true'
+        shell: bash
+        run: |
+          SOFT_FAIL_ARG=""
+          if [ "${{ inputs.checkov_soft_fail }}" = "true" ]; then
+            SOFT_FAIL_ARG="--soft-fail"
+          fi
+
+          checkov \
+            --directory ${{ inputs.terraform_dir }} \
+            --config-file ${{ inputs.checkov_config_path }} \
+            --framework terraform \
+            $SOFT_FAIL_ARG \
+            --output cli \
+            --output junitxml \
+            --output-file-path console,checkov-report.xml
+
+      - name: Upload policy scan evidence
+        if: steps.detect.outputs.has_tf == 'true' && always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: checkov-report.xml
+          retention-days: 30

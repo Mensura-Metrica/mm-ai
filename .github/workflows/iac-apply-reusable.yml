@@ -1,0 +1,68 @@
+name: IaC Apply Reusable
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: Target environment
+        required: true
+        type: string
+      terraform_version:
+        description: Terraform version to install
+        required: false
+        default: "1.9.8"
+        type: string
+      terraform_dir:
+        description: Terraform root directory
+        required: false
+        default: "infra/terraform"
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - name: Guardrail - apply disabled by default
+        if: ${{ vars.IAC_APPLY_ENABLED != 'true' }}
+        run: |
+          echo "IAC apply is disabled. Set repository variable IAC_APPLY_ENABLED=true only after first-deploy gate approval."
+          exit 1
+
+      - name: Checkout
+        if: ${{ vars.IAC_APPLY_ENABLED == 'true' }}
+        uses: actions/checkout@v5
+
+      - name: Setup Terraform
+        if: ${{ vars.IAC_APPLY_ENABLED == 'true' }}
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ inputs.terraform_version }}
+
+      - name: Detect Terraform files
+        if: ${{ vars.IAC_APPLY_ENABLED == 'true' }}
+        id: detect
+        shell: bash
+        run: |
+          if find "${{ inputs.terraform_dir }}" -type f -name "*.tf" 2>/dev/null | grep -q .; then
+            echo "has_tf=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_tf=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Fail if no IaC sources
+        if: ${{ vars.IAC_APPLY_ENABLED == 'true' && steps.detect.outputs.has_tf != 'true' }}
+        run: |
+          echo "No Terraform sources found at ${{ inputs.terraform_dir }}."
+          exit 1
+
+      - name: Placeholder apply step
+        if: ${{ vars.IAC_APPLY_ENABLED == 'true' && steps.detect.outputs.has_tf == 'true' }}
+        run: |
+          echo "Apply workflow intentionally left as gated placeholder until state backend, OIDC, and runbooks are finalized."
+          echo "No infrastructure changes were applied."
